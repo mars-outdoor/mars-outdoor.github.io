@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火星户外探索频道 | MARS EXPEDITION CHANNEL</title>
+    <style>
+        :root {
+            --mars-orange: #ff5500;
+            --cyber-cyan: #00f0ff;
+            --laser-red: #ff0055;
+            --space-bg: #05060a;
+        }
+
+        body {
+            background-color: var(--space-bg);
+            color: #ffffff;
+            font-family: 'Impact', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            background-image: linear-gradient(rgba(5, 6, 10, 0.85), rgba(5, 6, 10, 0.95)), 
+                              repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 85, 0, 0.02) 2px, rgba(255, 85, 0, 0.02) 4px);
+        }
+
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
+                        linear-gradient(90deg, rgba(255, 85, 0, 0.03), rgba(0, 240, 255, 0.01), rgba(255, 0, 85, 0.03));
+            z-index: 999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: rgba(12, 14, 24, 0.95);
+            border: 2px solid var(--mars-orange);
+            box-shadow: 0 0 15px var(--mars-orange), inset 0 0 15px rgba(255, 85, 0, 0.15);
+            border-radius: 2px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container::before {
+            content: "// MARS OUTDOOR EXPLORATION CHANNEL";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--space-bg);
+            padding: 0 15px;
+            color: var(--cyber-cyan);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px var(--cyber-cyan);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin: 10px 0 5px 0;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3), 3px 3px var(--laser-red);
+            letter-spacing: 3px;
+            animation: glitch 4s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); }
+            98% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); transform: skewX(0deg); }
+            99% { text-shadow: -6px 2px var(--laser-red), 4px -4px var(--cyber-cyan); transform: skewX(15deg); }
+            100% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); }
+        }
+
+        .tagline {
+            color: var(--mars-orange);
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 6px;
+            margin-bottom: 35px;
+            text-shadow: 0 0 5px rgba(255, 85, 0, 0.5);
+        }
+
+        .cyber-btn {
+            background: transparent;
+            border: 2px solid var(--cyber-cyan);
+            color: var(--cyber-cyan);
+            padding: 16px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            text-shadow: 0 0 5px var(--cyber-cyan);
+            margin-bottom: 25px;
+        }
+
+        .cyber-btn:hover {
+            color: #000;
+            background: var(--cyber-cyan);
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            font-weight: 900;
+        }
+
+        .cyber-btn:active {
+            transform: scale(0.96);
+        }
+
+        .menu-display {
+            padding: 25px;
+            background: rgba(5, 6, 10, 0.9);
+            border-left: 4px solid var(--mars-orange);
+            border-right: 1px solid rgba(255, 85, 0, 0.2);
+            border-top: 1px solid rgba(255, 85, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 85, 0, 0.2);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.95);
+            margin-bottom: 40px;
+        }
+
+        .menu-display.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .route-title {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        .route-tags {
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(255, 85, 0, 0.15);
+            color: var(--mars-orange);
+            padding: 3px 8px;
+            border: 1px solid var(--mars-orange);
+            margin-right: 6px;
+            font-weight: bold;
+        }
+
+        .route-desc {
+            color: #a4b3c6;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .booking-form {
+            border-top: 1px dashed rgba(0, 240, 255, 0.3);
+            padding-top: 30px;
+            text-align: left;
+        }
+
+        .form-title {
+            color: var(--cyber-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+            padding: 12px;
+            color: #fff;
+            box-sizing: border-box;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--mars-orange);
+            box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--mars-orange), var(--laser-red));
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+            letter-spacing: 2px;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 25px var(--mars-orange);
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>火星户外探索频道</h1>
+        <div class="tagline">地球不是终点 // DISCOVER EXTRAORDINARY</div>
+        
+        <button class="cyber-btn" onclick="nextRoute()">⚡ 切换下一次极限探索任务 ⚡</button>
+        
+        <div class="menu-display" id="routeBox">
+            <div class="route-title" id="routeName"></div>
+            <div class="route-tags" id="routeTags"></div>
+            <p class="route-desc" id="routeDesc"></p>
+        </div>
+
+        <div class="booking-form">
+            <div class="form-title">// 提交你的地球退役申请（任务预约咨询）</div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="input-group">
+                    <input type="text" id="userName" placeholder="探索员代号 / 您的姓名" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="userPhone" placeholder="量子通信频段 / 手机号码" required>
+                </div>
+                <button type="submit" class="submit-btn">立即锁定任务席位</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const routes = [
+            {
+                name: "【 任务代号：地球引力逃逸 】- 极致高空跳伞计划",
+                tags: ["高空极限", "心率超频", "专业伞兵带飞"],
+                desc: "从海拔4500米破云跃下，体验50秒绝对自由落体的极致快感。纯粹的肾上腺素风暴，用俯瞰地表的视角，重新定义你对自由的认知。"
+            },
+            {
+                name: "【 任务代号：无人区机甲越野 】- 荒漠硬核拉力赛",
+                tags: ["全地形越野", "硬核穿越", "戈壁生存"],
+                desc: "驾驶重型全地形越野车，横穿地貌最像火星的无人区戈壁。3天2夜无信号闭环生存，打破都市牢笼，在引擎轰鸣中征服风沙与乱石。"
+            },
+            {
+                name: "【 任务代号：寂静冰原极点徒步 】- 冰川极限生存挑战",
+                tags: ["极限徒步", "耐寒挑战", "地质考察"],
+                desc: "深入万年不化的无人冰川腹地，顶着强风进行高强度重装徒步。在极简的纯白世界里，挑战体能与意志的绝对极限，见证真正的地球壮美。"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        window.onload = function() {
+            showRoute(0);
+        }
+
+        function showRoute(index) {
+            const box = document.getElementById('routeBox');
+            const name = document.getElementById('routeName');
+            const tagsContainer = document.getElementById('routeTags');
+            const desc = document.getElementById('routeDesc');
+
+            box.classList.remove('show');
+
+            setTimeout(() => {
+                const data = routes[index];
+                name.innerText = data.name;
+                desc.innerText = data.desc;
+                
+                tagsContainer.innerHTML = '';
+                data.tags.forEach(t => {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.innerText = t;
+                    tagsContainer.appendChild(span);
+                });
+
+                box.classList.add('show');
+            }, 200);
+        }
+
+        function nextRoute() {
