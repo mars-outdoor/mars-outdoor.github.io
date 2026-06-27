@@ -6,306 +6,329 @@
     <title>火星户外探索频道 | MARS EXPEDITION CHANNEL</title>
     <style>
         :root {
-            --mars-orange: #ff5500;
-            --cyber-cyan: #00f0ff;
-            --laser-red: #ff0055;
-            --space-bg: #05060a;
+            --bg-color: #0d0d0d;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff66; /* 荧光绿科技感 */
+            --accent-hover: #00cc52;
+            --card-bg: #1a1a1a;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background-color: var(--space-bg);
-            color: #ffffff;
-            font-family: 'Impact', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-y: auto;
-            position: relative;
-            background-image: linear-gradient(rgba(5, 6, 10, 0.85), rgba(5, 6, 10, 0.95)), 
-                              repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 85, 0, 0.02) 2px, rgba(255, 85, 0, 0.02) 4px);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: " ";
-            display: block;
+        /* 顶部导航栏 */
+        header {
             position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
-                        linear-gradient(90deg, rgba(255, 85, 0, 0.03), rgba(0, 240, 255, 0.01), rgba(255, 0, 85, 0.03));
-            z-index: 999;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
         }
 
-        .container {
-            width: 90%;
-            max-width: 650px;
-            background: rgba(12, 14, 24, 0.95);
-            border: 2px solid var(--mars-orange);
-            box-shadow: 0 0 15px var(--mars-orange), inset 0 0 15px rgba(255, 85, 0, 0.15);
-            border-radius: 2px;
-            padding: 40px;
-            margin: 30px 0;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .container::before {
-            content: "// MARS OUTDOOR EXPLORATION CHANNEL";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--space-bg);
-            padding: 0 15px;
-            color: var(--cyber-cyan);
-            font-size: 0.8rem;
-            font-weight: bold;
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
             letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--cyber-cyan);
-        }
-
-        h1 {
-            font-size: 2.6rem;
-            margin: 10px 0 5px 0;
             color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 3px 3px var(--laser-red);
-            letter-spacing: 3px;
-            animation: glitch 4s infinite;
         }
 
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); }
-            98% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); transform: skewX(0deg); }
-            99% { text-shadow: -6px 2px var(--laser-red), 4px -4px var(--cyber-cyan); transform: skewX(15deg); }
-            100% { text-shadow: 2px 2px var(--laser-red), -2px -2px var(--cyber-cyan); }
+        .logo span {
+            color: var(--accent-color);
         }
 
-        .tagline {
-            color: var(--mars-orange);
-            font-size: 1.1rem;
-            font-weight: bold;
-            letter-spacing: 6px;
-            margin-bottom: 35px;
-            text-shadow: 0 0 5px rgba(255, 85, 0, 0.5);
-        }
-
-        .cyber-btn {
-            background: transparent;
-            border: 2px solid var(--cyber-cyan);
-            color: var(--cyber-cyan);
-            padding: 16px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
+        nav a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
             cursor: pointer;
-            letter-spacing: 2px;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-            text-shadow: 0 0 5px var(--cyber-cyan);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* 页面容器（控制显示与隐藏） */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding: 120px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 主页 (Hero Section) */
+        #home {
+            display: none; /* 默认由JS控制激活 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        #home.active { display: flex; }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* 极简按钮 */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--accent-color);
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* 探索任务页（网格卡片） */
+        .section-title {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 30px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .card-tag {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        /* 咨询表单页 */
+        .form-container {
+            max-width: 600px;
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 40px;
+            border-radius: 6px;
+        }
+
+        .form-group {
             margin-bottom: 25px;
         }
 
-        .cyber-btn:hover {
-            color: #000;
-            background: var(--cyber-cyan);
-            box-shadow: 0 0 30px var(--cyber-cyan);
-            font-weight: 900;
+        .form-group label {
+            display: block;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
         }
 
-        .cyber-btn:active {
-            transform: scale(0.96);
-        }
-
-        .menu-display {
-            padding: 25px;
-            background: rgba(5, 6, 10, 0.9);
-            border-left: 4px solid var(--mars-orange);
-            border-right: 1px solid rgba(255, 85, 0, 0.2);
-            border-top: 1px solid rgba(255, 85, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 85, 0, 0.2);
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: scale(0.95);
-            margin-bottom: 40px;
-        }
-
-        .menu-display.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .route-title {
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-            letter-spacing: 1px;
-            text-align: left;
-        }
-
-        .route-tags {
-            text-align: left;
-            margin-bottom: 12px;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            background: rgba(255, 85, 0, 0.15);
-            color: var(--mars-orange);
-            padding: 3px 8px;
-            border: 1px solid var(--mars-orange);
-            margin-right: 6px;
-            font-weight: bold;
-        }
-
-        .route-desc {
-            color: #a4b3c6;
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        .booking-form {
-            border-top: 1px dashed rgba(0, 240, 255, 0.3);
-            padding-top: 30px;
-            text-align: left;
-        }
-
-        .form-title {
-            color: var(--cyber-cyan);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        input {
+        .form-group input, .form-group textarea {
             width: 100%;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #334155;
             padding: 12px;
+            background: #0d0d0d;
+            border: 1px solid #333;
             color: #fff;
-            box-sizing: border-box;
-            border-radius: 2px;
-            transition: all 0.3s;
+            border-radius: 4px;
+            font-family: var(--font-family);
         }
 
-        input:focus {
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
             outline: none;
-            border-color: var(--mars-orange);
-            box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
         }
 
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, var(--mars-orange), var(--laser-red));
-            color: #fff;
-            border: none;
-            padding: 14px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
-            letter-spacing: 2px;
-            transition: all 0.2s;
-        }
-
-        .submit-btn:hover {
-            box-shadow: 0 0 25px var(--mars-orange);
-            letter-spacing: 4px;
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav a { margin-left: 15px; font-size: 0.85rem; }
+            .hero-title { font-size: 2.2rem; }
+            .page-section { padding: 100px 20px 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>火星户外探索频道</h1>
-        <div class="tagline">地球不是终点 // DISCOVER EXTRAORDINARY</div>
-        
-        <button class="cyber-btn" onclick="nextRoute()">⚡ 切换下一次极限探索任务 ⚡</button>
-        
-        <div class="menu-display" id="routeBox">
-            <div class="route-title" id="routeName"></div>
-            <div class="route-tags" id="routeTags"></div>
-            <p class="route-desc" id="routeDesc"></p>
-        </div>
+    <!-- 顶部导航 -->
+    <header>
+        <div class="logo" onclick="switchPage('home')" style="cursor:pointer">MARS<span>.EXPLORE</span></div>
+        <nav>
+            <a onclick="switchPage('home')" id="nav-home" class="active">主页</a>
+            <a onclick="switchPage('missions')" id="nav-missions">极限探索</a>
+            <a onclick="switchPage('about')" id="nav-about">关于频道</a>
+            <a onclick="switchPage('apply')" id="nav-apply">退役申请</a>
+        </nav>
+    </header>
 
-        <div class="booking-form">
-            <div class="form-title">// 提交你的地球退役申请（任务预约咨询）</div>
-            <form onsubmit="handleSubmit(event)">
-                <div class="input-group">
-                    <input type="text" id="userName" placeholder="探索员代号 / 您的姓名" required>
+    <!-- 1. 主页 -->
+    <section id="home" class="page-section active">
+        <h1 class="hero-title">地球不是终点<br>探索下一场极限</h1>
+        <p class="hero-subtitle">火星户外探索频道 (MARS EXPEDITION CHANNEL) 专为追求极致孤独与无畏体验的探索者打造。点击下方，即刻解密人类下一阶段的退役生存任务。</p>
+        <div>
+            <button class="btn" onclick="switchPage('missions')">查看下一次任务 ⚡</button>
+        </div>
+    </section>
+
+    <!-- 2. 极限探索任务页 -->
+    <section id="missions" class="page-section">
+        <h2 class="section-title">// 极限任务排期</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-tag">MISSION 01</div>
+                <h3 class="card-title">奥林匹斯山脊速降</h3>
+                <p class="card-text">征服太阳系已知最高的火山，在稀薄的二氧化碳大气中体验高达 21,000 米的极速重力滑行。</p>
+            </div>
+            <div class="card">
+                <div class="card-tag">MISSION 02</div>
+                <h3 class="card-title">水手号峡谷徒步</h3>
+                <p class="card-text">横穿长达 4000 公里的超级大峡谷，夜间宿营于零下 80 度的极寒铁锈风沙之中。</p>
+            </div>
+            <div class="card">
+                <div class="card-tag">MISSION 03</div>
+                <h3 class="card-title">干冰极冠极昼生存</h3>
+                <p class="card-text">在火星南极冰盖孤身生存 72 小时，利用微型融冰装置获取极其珍贵的液态水资源。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 关于我们 -->
+    <section id="about" class="page-section">
+        <h2 class="section-title">// 关于频道</h2>
+        <p class="hero-subtitle" style="max-width: 800px; margin-bottom: 20px; color: #fff;">
+            我们不是在旅行，我们是在为人类物种的多元化寻找最前沿的边界。
+        </p>
+        <p class="hero-subtitle" style="max-width: 800px;">
+            火星户外探索频道创立于未来探索时代，致力于提供最硬核的行星地表生存指南、极限耐力训练以及跨星系任务对接。我们相信，退役地球不是终点，而是极致浪漫的开端。
+        </p>
+    </section>
+
+    <!-- 4. 预约咨询页（提交退役申请） -->
+    <section id="apply" class="page-section">
+        <h2 class="section-title">// 地球退役申请表</h2>
+        <div class="form-container">
+            <form id="marsForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>探索者代号 / 姓名</label>
+                    <input type="text" placeholder="例如：Explorer_07" required>
                 </div>
-                <div class="input-group">
-                    <input type="tel" id="userPhone" placeholder="量子通信频段 / 手机号码" required>
+                <div class="form-group">
+                    <label>地球生存年限 (年龄)</label>
+                    <input type="number" placeholder="例如：28" required>
                 </div>
-                <button type="submit" class="submit-btn">立即锁定任务席位</button>
+                <div class="form-group">
+                    <label>极限运动经验 / 备注说明</label>
+                    <textarea rows="4" placeholder="请简述您的登山、潜水或低空跳伞经历..." required></textarea>
+                </div>
+                <button type="submit" class="btn">锁定任务席位 ⚡</button>
             </form>
         </div>
-    </div>
+    </section>
 
+    <!-- 交互逻辑 JS -->
     <script>
-        const routes = [
-            {
-                name: "【 任务代号：地球引力逃逸 】- 极致高空跳伞计划",
-                tags: ["高空极限", "心率超频", "专业伞兵带飞"],
-                desc: "从海拔4500米破云跃下，体验50秒绝对自由落体的极致快感。纯粹的肾上腺素风暴，用俯瞰地表的视角，重新定义你对自由的认知。"
-            },
-            {
-                name: "【 任务代号：无人区机甲越野 】- 荒漠硬核拉力赛",
-                tags: ["全地形越野", "硬核穿越", "戈壁生存"],
-                desc: "驾驶重型全地形越野车，横穿地貌最像火星的无人区戈壁。3天2夜无信号闭环生存，打破都市牢笼，在引擎轰鸣中征服风沙与乱石。"
-            },
-            {
-                name: "【 任务代号：寂静冰原极点徒步 】- 冰川极限生存挑战",
-                tags: ["极限徒步", "耐寒挑战", "地质考察"],
-                desc: "深入万年不化的无人冰川腹地，顶着强风进行高强度重装徒步。在极简的纯白世界里，挑战体能与意志的绝对极限，见证真正的地球壮美。"
+        // 单文件无刷新页面切换逻辑
+        function switchPage(pageId) {
+            // 1. 隐藏所有页面并移除激活状态
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. 移除所有导航栏的高亮
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. 激活当前点击的页面
+            const activeSection = document.getElementById(pageId);
+            if(activeSection) {
+                activeSection.classList.add('active');
+                // 触发淡入动画
+                setTimeout(() => {
+                    activeSection.style.opacity = '1';
+                }, 50);
             }
-        ];
 
-        let currentIndex = 0;
+            // 4. 高亮当前导航链接
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
 
-        window.onload = function() {
-            showRoute(0);
-        }
-
-        function showRoute(index) {
-            const box = document.getElementById('routeBox');
-            const name = document.getElementById('routeName');
-            const tagsContainer = document.getElementById('routeTags');
-            const desc = document.getElementById('routeDesc');
-
-            box.classList.remove('show');
-
-            setTimeout(() => {
-                const data = routes[index];
-                name.innerText = data.name;
-                desc.innerText = data.desc;
-                
-                tagsContainer.innerHTML = '';
-                data.tags.forEach(t => {
-                    const span = document.createElement('span');
-                    span.className = 'tag';
-                    span.innerText = t;
-                    tagsContainer.appendChild(span);
-                });
-
-                box.classList.add('show');
-            }, 200);
-        }
-
-        function nextRoute() {
+            // 5. 自动滚动回顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
