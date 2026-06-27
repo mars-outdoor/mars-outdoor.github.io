@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>火星户外探索频道 | 关于频道</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        :root { --bg-color: #0c0e12; --card-bg: #161a22; --text-color: #e0e6ed; --accent-color: #ff4500; --glow-color: #00ffcc; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+        header { background-color: rgba(22, 26, 34, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-color); backdrop-filter: blur(10px); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0.8rem 1rem; gap: 0.8rem; }
+        @media (min-width: 600px) { nav { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; gap: 0; } }
+        .logo { display: flex; flex-direction: column; text-align: center; }
+        .logo .brand-zh { font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: #ffffff; }
+        .logo .brand-en { font-size: 0.7rem; letter-spacing: 2px; color: var(--glow-color); font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 1rem; width: 100%; justify-content: space-around; border-top: 1px solid #2a3241; padding-top: 0.6rem; }
+        @media (min-width: 600px) { .nav-links { width: auto; border-top: none; padding-top: 0; gap: 2rem; } }
+        .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.3rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--glow-color); border-bottom: 2px solid var(--glow-color); }
+        main { max-width: 1200px; margin: 1.5rem auto 4rem auto; padding: 0 1.2rem; }
+        .timeline { margin-top: 1.5rem; border-left: 2px solid #2a3241; padding-left: 1.2rem; }
+        .timeline-item { margin-bottom: 2rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.6rem; top: 0.3rem; width: 10px; height: 10px; background-color: var(--glow-color); border-radius: 50%; box-shadow: 0 0 6px var(--glow-color); }
+        .timeline-time { color: var(--glow-color); font-weight: bold; margin-bottom: 0.3rem; font-size: 1rem; }
+        .timeline-item h4 { color: #fff; margin-bottom: 0.4rem; font-size: 1.1rem; }
+        .timeline-item p { color: #a0aec0; font-size: 0.88rem; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><span class="brand-zh">火星户外探索频道</span><span class="brand-en">MARS.EXPLORE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="routes.html">徒步探索</a></li>
+                <li><a href="about.html" class="active">关于频道</a></li>
+                <li><a href="join.html">报名通道</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>// 关于频道（公司简介）</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">2019年8月 成立</div>
+                <h4>诞生于赛博山城</h4>
+                <p>重庆火星户外运动有限公司正式确立“火星户外探索频道”厂牌，旨在将渴望摆脱都市喧嚣的探索者引向极致孤独的野外秘境。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">步骤 01：路线勘测</div>
+                <h4>本土无人秘境锁定</h4>
+                <p>专业探险队深入川渝及周边高海拔地区，通过实地测绘与风险评估，开发多条极具荒凉感与挑战性的专属徒步路线。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">步骤 02：前哨建立</div>
+                <h4>全方位后勤保障部署</h4>
+                <p>在各大无人区沿途投放自研的补给设施，并组建拥有持证专业领队、卫星通讯、野外急救能力的星际级救援车队。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">步骤 03：商业运营与终极远征</div>
+                <h4>面向全网开启远征招募</h4>
+                <p>全面开启常态化高保障的硬核/轻奢户外徒步项目，为所有向往自由的地球人提供从零开始的适应性体能培训与荒野生存训练。</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
