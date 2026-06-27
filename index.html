@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>火星户外探索频道 | 首页</title>
+    <title>火星户外探索频道 | 报名通道</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         :root { --bg-color: #0c0e12; --card-bg: #161a22; --text-color: #e0e6ed; --accent-color: #ff4500; --glow-color: #00ffcc; }
@@ -12,7 +12,6 @@
         nav { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0.8rem 1rem; gap: 0.8rem; }
         @media (min-width: 600px) { nav { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; gap: 0; } }
         .logo { display: flex; flex-direction: column; text-align: center; }
-        @media (min-width: 600px) { .logo { text-align: left; } }
         .logo .brand-zh { font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: #ffffff; }
         .logo .brand-en { font-size: 0.7rem; letter-spacing: 2px; color: var(--glow-color); font-weight: bold; }
         .nav-links { display: flex; list-style: none; gap: 1rem; width: 100%; justify-content: space-around; border-top: 1px solid #2a3241; padding-top: 0.6rem; }
@@ -20,13 +19,15 @@
         .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.3rem 0; }
         .nav-links a:hover, .nav-links a.active { color: var(--glow-color); border-bottom: 2px solid var(--glow-color); }
         main { max-width: 1200px; margin: 1.5rem auto 4rem auto; padding: 0 1.2rem; }
-        .btn { background-color: transparent; border: 2px solid var(--glow-color); color: var(--glow-color); padding: 0.9rem 2rem; cursor: pointer; font-weight: bold; transition: all 0.3s; text-transform: uppercase; margin-top: 1.5rem; display: block; width: 100%; text-align: center; letter-spacing: 1px; font-size: 1rem; text-decoration: none; }
+        .btn { background-color: transparent; border: 2px solid var(--glow-color); color: var(--glow-color); padding: 0.9rem 2rem; cursor: pointer; font-weight: bold; transition: all 0.3s; text-transform: uppercase; margin-top: 1.5rem; display: block; width: 100%; text-align: center; letter-spacing: 1px; font-size: 1rem; }
         @media (min-width: 600px) { .btn { display: inline-block; width: auto; } }
         .btn:hover { background-color: var(--glow-color); color: var(--bg-color); box-shadow: 0 0 15px var(--glow-color); }
-        .hero { text-align: center; padding: 4rem 0; }
-        .hero .subtitle { color: var(--glow-color); font-size: 1rem; letter-spacing: 4px; margin-bottom: 0.8rem; font-weight: bold; }
-        .hero h1 { font-size: 1.8rem; margin-bottom: 1.5rem; letter-spacing: 1px; line-height: 1.5; padding: 0 0.5rem; }
-        @media (min-width: 600px) { .hero h1 { font-size: 2.5rem; } }
+        .form-container { max-width: 100%; background-color: var(--card-bg); padding: 1.8rem; border-radius: 6px; border: 1px solid #2a3241; margin-top: 1.5rem; }
+        @media (min-width: 600px) { .form-container { padding: 3rem; max-width: 500px; } }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: #a0aec0; }
+        .form-group input { width: 100%; padding: 0.85rem; background-color: #0c0e12; border: 1px solid #2a3241; color: #fff; border-radius: 4px; font-size: 1rem; -webkit-appearance: none; }
+        .form-group input:focus { border-color: var(--glow-color); outline: none; }
     </style>
 </head>
 <body>
@@ -34,18 +35,34 @@
         <nav>
             <div class="logo"><span class="brand-zh">火星户外探索频道</span><span class="brand-en">MARS.EXPLORE</span></div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">主页</a></li>
+                <li><a href="index.html">主页</a></li>
                 <li><a href="routes.html">徒步探索</a></li>
                 <li><a href="about.html">关于频道</a></li>
-                <li><a href="join.html">报名通道</a></li>
+                <li><a href="join.html" class="active">报名通道</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="hero">
-            <div class="subtitle">火星户外探索频道</div>
-            <h1>步入极致纯粹<br>去旷野寻找你的火星</h1>
-            <a href="routes.html" class="btn">查看徒步线路 ⚡</a>
+        <h2>// 远征招募报名通道</h2>
+        <div class="form-container">
+            <!-- 已成功绑定您的真實接收邮箱：341839016@qq.com -->
+            <form action="https://formsubmit.co" method="POST">
+                
+                <!-- 提交成功后自动跳回您的网站报名页 -->
+                <input type="hidden" name="_next" value="https://github.io">
+                <!-- 彻底关闭烦人的图形验证码，优化手机填表体验 -->
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="username">您的姓名或地球昵称</label>
+                    <input type="text" name="探索者姓名" id="username" required placeholder="请输入您的称呼">
+                </div>
+                <div class="form-group">
+                    <label for="phone">联系电话 / 通讯编码</label>
+                    <input type="tel" name="探索者电话" id="phone" required placeholder="请输入您的手机号">
+                </div>
+                <button type="submit" class="btn">提交申请 ⚡</button>
+            </form>
         </div>
     </main>
 </body>
