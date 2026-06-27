@@ -2,28 +2,93 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>火星户外探索频道</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火星户外探索频道 | MARS EXPEDITION CHANNEL</title>
     <style>
-        /* CSS：包含科幻暗黑风格、网格布局、按钮特效 */
-        :root { /* 此处省略部分变量定义，详见原代码 */ }
-        body { background-color: #0b0c10; color: #ffffff; }
+        /* 基础样式与科幻配色 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg-color: #0c0e12; --card-bg: #161a22; --text-color: #e0e6ed; --accent-color: #ff4500; --glow-color: #00ffcc; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+        header { background-color: rgba(22, 26, 34, 0.9); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-color); backdrop-filter: blur(10px); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { font-weight: bold; letter-spacing: 2px; color: var(--glow-color); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: var(--text-color); text-decoration: none; cursor: pointer; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--glow-color); }
+        main { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
         .content-section { display: none; }
         .content-section.active { display: block; }
-        /* 布局、卡片、表单样式详见原HTML */
+        .btn { background-color: transparent; border: 2px solid var(--glow-color); color: var(--glow-color); padding: 0.8rem 2rem; cursor: pointer; font-weight: bold; transition: all 0.3s; text-transform: uppercase; margin-top: 1.5rem; display: inline-block; }
+        .btn:hover { background-color: var(--glow-color); color: var(--bg-color); box-shadow: 0 0 15px var(--glow-color); }
+        .hero { text-align: center; padding: 5rem 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .card { background-color: var(--card-bg); border: 1px solid #2a3241; padding: 2rem; border-radius: 4px; position: relative; }
+        .card-num { position: absolute; top: 1rem; right: 1rem; font-size: 0.8rem; color: var(--glow-color); }
+        .timeline { margin-top: 2rem; border-left: 2px solid #2a3241; padding-left: 1.5rem; }
+        .timeline-item { margin-bottom: 2rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.95rem; top: 0.3rem; width: 10px; height: 10px; background-color: var(--glow-color); border-radius: 50%; }
+        .form-container { max-width: 500px; background-color: var(--card-bg); padding: 3rem; border-radius: 4px; border: 1px solid #2a3241; margin-top: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input { width: 100%; padding: 0.8rem; background-color: #0c0e12; border: 1px solid #2a3241; color: #fff; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <header><!-- 导航栏 --></header>
+    <header>
+        <nav>
+            <div class="logo">MARS.EXPLORE</div>
+            <ul class="nav-links">
+                <li><a onclick="switchTab('home')" id="nav-home" class="active">主页</a></li>
+                <li><a onclick="switchTab('routes')" id="nav-routes">徒步探索</a></li>
+                <li><a onclick="switchTab('about')" id="nav-about">关于频道</a></li>
+                <li><a onclick="switchTab('join')" id="nav-join">报名通道</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <section id="home-section" class="content-section active"><!-- 主页内容 --></section>
-        <section id="routes-section" class="content-section"><!-- 徒步线路展示 --></section>
-        <section id="about-section" class="content-section"><!-- 关于频道内容 --></section>
-        <section id="join-section" class="content-section"><!-- 报名表单 --></section>
+        <section id="home-section" class="content-section active">
+            <div class="hero">
+                <h1>地球不是终点 探索下一场极限徒步</h1>
+                <button class="btn" onclick="switchTab('routes')">查看徒步线路 ⚡</button>
+            </div>
+        </section>
+        <section id="routes-section" class="content-section">
+            <h2>// 极限徒步线路展示</h2>
+            <div class="grid">
+                <div class="card"><span class="card-num">ROUTE 01</span><h3>奥林匹斯山脊徒步</h3><p>低重力徒步，感受荒凉之美。</p></div>
+                <div class="card"><span class="card-num">ROUTE 02</span><h3>水手号大峡谷横穿</h3><p>连续两周行军，精神与体力的终极测试。</p></div>
+            </div>
+        </section>
+        <section id="about-section" class="content-section">
+            <h2>// 关于频道</h2>
+            <div class="timeline">
+                <div class="timeline-item"><h4>阶段一：无人路线勘测</h4></div>
+                <div class="timeline-item"><h4>阶段四：开启终极远征</h4></div>
+            </div>
+        </section>
+        <section id="join-section" class="content-section">
+            <h2>// 远征招募报名通道</h2>
+            <div class="form-container">
+                <form id="marsForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group"><input type="text" id="username" required placeholder="姓名 / 地球昵称"></div>
+                    <div class="form-group"><input type="tel" id="phone" required placeholder="通讯编码"></div>
+                    <button type="submit" class="btn">提交申请 ⚡</button>
+                </form>
+            </div>
+        </section>
     </main>
     <script>
-        // JS：实现Tab切换逻辑与表单提交响应
-        function switchTab(tabName) { /* ... */ }
-        function handleFormSubmit(event) { /* ... */ }
+        function switchTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            document.getElementById(`${tabName}-section`).classList.add('active');
+            document.getElementById(`nav-${tabName}`).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert(`【火星信号已接收！】\n欢迎加入，${document.getElementById('username').value}！`);
+            document.getElementById('marsForm').reset();
+        }
     </script>
 </body>
 </html>
