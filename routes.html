@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>火星户外探索频道 | 徒步探索</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        :root { --bg-color: #0c0e12; --card-bg: #161a22; --text-color: #e0e6ed; --accent-color: #ff4500; --glow-color: #00ffcc; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+        header { background-color: rgba(22, 26, 34, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-color); backdrop-filter: blur(10px); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0.8rem 1rem; gap: 0.8rem; }
+        @media (min-width: 600px) { nav { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; gap: 0; } }
+        .logo { display: flex; flex-direction: column; text-align: center; }
+        .logo .brand-zh { font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: #ffffff; }
+        .logo .brand-en { font-size: 0.7rem; letter-spacing: 2px; color: var(--glow-color); font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 1rem; width: 100%; justify-content: space-around; border-top: 1px solid #2a3241; padding-top: 0.6rem; }
+        @media (min-width: 600px) { .nav-links { width: auto; border-top: none; padding-top: 0; gap: 2rem; } }
+        .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.3rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--glow-color); border-bottom: 2px solid var(--glow-color); }
+        main { max-width: 1200px; margin: 1.5rem auto 4rem auto; padding: 0 1.2rem; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        @media (min-width: 768px) { .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; } }
+        .card { background-color: var(--card-bg); border: 1px solid #2a3241; padding: 1.5rem; border-radius: 6px; position: relative; }
+        .card-num { position: absolute; top: 1rem; right: 1rem; font-size: 0.75rem; color: var(--glow-color); font-weight: bold; }
+        .card h3 { margin-bottom: 0.8rem; font-size: 1.2rem; color: #fff; padding-right: 3.5rem; }
+        .card p { font-size: 0.9rem; color: #a0aec0; margin-bottom: 1.2rem; line-height: 1.5; }
+        .card .badge { display: inline-block; font-size: 0.75rem; padding: 0.2rem 0.5rem; background-color: rgba(255, 69, 0, 0.15); color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><span class="brand-zh">火星户外探索频道</span><span class="brand-en">MARS.EXPLORE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="routes.html" class="active">徒步探索</a></li>
+                <li><a href="about.html">关于频道</a></li>
+                <li><a href="join.html">报名通道</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>// 极限徒步线路展示</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="card-num">ROUTE 01</span>
+                <h3>武隆天生三桥地质裂缝穿越</h3>
+                <p>深入地表下方迷宫，在冷冽的怪石与绝壁中行军。体验酷似异星表面的硬核喀斯特地貌徒步。</p>
+                <span class="badge">难度：★★★★☆</span>
+            </div>
+            <div class="card">
+                <span class="card-num">ROUTE 02</span>
+                <h3>金佛山暗河与绝壁探险线</h3>
+                <p>穿越常年大雾的高海拔山脊，并在漆黑的喀斯特溶洞暗河中寻找未知方向，考验极限心理素质。</p>
+                <span class="badge">难度：★★★★★</span>
+            </div>
+            <div class="card">
+                <span class="card-num">ROUTE 03</span>
+                <h3>高山荒野草甸星空露营徒步</h3>
+                <p>置身无信号的茫茫旷野，连续负重行军后在山脊之巅安营扎寨，仰望触手可及的浩瀚星河。</p>
+                <span class="badge">难度：★★★☆☆</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
