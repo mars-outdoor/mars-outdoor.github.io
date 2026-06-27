@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>火星户外探索频道 | 报名通道</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        :root { --bg-color: #0c0e12; --card-bg: #161a22; --text-color: #e0e6ed; --accent-color: #ff4500; --glow-color: #00ffcc; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+        header { background-color: rgba(22, 26, 34, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-color); backdrop-filter: blur(10px); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0.8rem 1rem; gap: 0.8rem; }
+        @media (min-width: 600px) { nav { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; gap: 0; } }
+        .logo { display: flex; flex-direction: column; text-align: center; }
+        .logo .brand-zh { font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: #ffffff; }
+        .logo .brand-en { font-size: 0.7rem; letter-spacing: 2px; color: var(--glow-color); font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 1rem; width: 100%; justify-content: space-around; border-top: 1px solid #2a3241; padding-top: 0.6rem; }
+        @media (min-width: 600px) { .nav-links { width: auto; border-top: none; padding-top: 0; gap: 2rem; } }
+        .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.3rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--glow-color); border-bottom: 2px solid var(--glow-color); }
+        main { max-width: 1200px; margin: 1.5rem auto 4rem auto; padding: 0 1.2rem; }
+        .btn { background-color: transparent; border: 2px solid var(--glow-color); color: var(--glow-color); padding: 0.9rem 2rem; cursor: pointer; font-weight: bold; transition: all 0.3s; text-transform: uppercase; margin-top: 1.5rem; display: block; width: 100%; text-align: center; letter-spacing: 1px; font-size: 1rem; }
+        @media (min-width: 600px) { .btn { display: inline-block; width: auto; } }
+        .btn:hover { background-color: var(--glow-color); color: var(--bg-color); box-shadow: 0 0 15px var(--glow-color); }
+        .form-container { max-width: 100%; background-color: var(--card-bg); padding: 1.8rem; border-radius: 6px; border: 1px solid #2a3241; margin-top: 1.5rem; }
+        @media (min-width: 600px) { .form-container { padding: 3rem; max-width: 500px; } }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: #a0aec0; }
+        .form-group input { width: 100%; padding: 0.85rem; background-color: #0c0e12; border: 1px solid #2a3241; color: #fff; border-radius: 4px; font-size: 1rem; -webkit-appearance: none; }
+        .form-group input:focus { border-color: var(--glow-color); outline: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><span class="brand-zh">火星户外探索频道</span><span class="brand-en">MARS.EXPLORE</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="routes.html">徒步探索</a></li>
+                <li><a href="about.html">关于频道</a></li>
+                <li><a href="join.html" class="active">报名通道</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>// 远征招募报名通道</h2>
+        <div class="form-container">
+            <form id="marsForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="username">您的姓名或地球昵称</label>
+                    <input type="text" id="username" required placeholder="请输入您的称呼">
+                </div>
+                <div class="form-group">
+                    <label for="phone">联系电话 / 通讯编码</label>
+                    <input type="tel" id="phone" required placeholder="请输入您的手机号">
+                </div>
+                <button type="submit" class="btn">提交申请 ⚡</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('username').value;
+            alert(`【火星信号已接收！】\n\n欢迎加入远征，探索者 [ ${name} ]！\n我们的星际向导将在三个工作日内与您取得联系。`);
+            document.getElementById('marsForm').reset();
+        }
+    </script>
+</body>
+</html>
