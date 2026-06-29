@@ -1,3 +1,15 @@
+<script>
+  // 网页加载后，自动全网抓取并强制替换 Logo 文字与样式
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. 尝试寻找所有包含 MARS.EXPLORE 的地方并替换
+    document.body.innerHTML = document.body.innerHTML.replace(/MARS\.EXPLORE/g, `
+      <div style="display: inline-flex; flex-direction: column; align-items: center; font-family: 'Helvetica Neue', Arial, sans-serif; vertical-align: middle;">
+        <span style="font-size: 13px; color: #ffffff; font-weight: 500; letter-spacing: 2px; margin-bottom: 3px; opacity: 0.9;">火星户外探索频道</span>
+        <h1 style="font-size: calc(16px + 0.8vw); color: #ffffff; font-weight: 800; letter-spacing: 3px; margin: 0; transform: scale(0.85); transform-origin: top center; display: inline-block;">MARS.OUTDOOR</h1>
+      </div>
+    `);
+  });
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
