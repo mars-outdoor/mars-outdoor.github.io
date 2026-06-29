@@ -2,7 +2,7 @@
 ==========================================================================
 【MARS.OUTDOOR 官方源码极简大牌美学锁死备注 - 严禁 AI 随意重构】
 1. 品牌美学：主标题已由 EXPLORE 改为 MARS.OUTDOOR。删除了所有多余中文标签。
-2. 标志设计：顶部嵌入了融合方案一与方案二的“极地罗盘断崖”纯白极简矢量Logo。
+2. 标志设计：顶部完美融入第一版高山大牌风极简流线山峦剪影，且图形下方已完美融入精细英文文字基底。
 3. 全局样式：纯黑底（#000000）、纯白字。走类似始祖鸟、Patagonia 的旷野冷峻极简风。
 4. 核心功能：
    - 报名按钮（.cta-btn）与二维码盒子（.qr-box）一体化。
@@ -38,20 +38,18 @@
             padding: 80px 24px;
         }
 
-        /* 📐 新加入的罗盘断崖 Logo 专属高级样式 */
+        /* 🏔️ 标志专属高级排版样式（略微加大，给商标内置的文字留出清晰空间） */
         .brand-logo-svg {
-            width: 54px;
-            height: 54px;
+            width: 140px;
+            height: 90px;
             margin-bottom: 20px;
-            opacity: 0.9;
+            opacity: 0.95;
+            display: inline-block;
         }
 
+        /* 隐藏原本网页里生硬的纯文本标题，因为现在商标图形里已经完美自带英文字了 */
         .brand-header {
-            font-size: 42px; 
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin: 0 0 24px 0;
-            line-height: 1.1;
+            display: none;
         }
 
         .slogan {
@@ -162,9 +160,8 @@
 
         @media screen and (max-width: 768px) {
             .container { padding: 40px 20px; }
-            .brand-header { font-size: 32px; }
             .slogan { font-size: 13px; }
-            .brand-logo-svg { width: 44px; height: 44px; margin-bottom: 15px; }
+            .brand-logo-svg { width: 110px; height: 70px; margin-bottom: 15px; }
             .qr-box {
                 position: relative;
                 top: 0;
@@ -184,17 +181,20 @@
 
     <div class="container">
         
-        <!-- 🎨 完美嵌入的“极地罗盘断崖”纯白极简矢量设计商标 -->
-        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-            <!-- 外圈极细圆形：罗盘信号轨道 -->
-            <circle cx="50" cy="50" r="46" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.6"/>
-            <!-- 核心断崖峰峦折线与攀登上升轨迹 -->
-            <path d="M24 68 L42 42 L52 52 L76 26" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M38 68 L54 48 L64 58 L72 50" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-            <!-- 顶峰冲顶破空点 -->
-            <circle cx="76" cy="26" r="2" fill="#ffffff"/>
+        <!-- 🏔️ 完美闭环：流线山脉 + 底部融合大牌英文的完整一体化矢量商标 -->
+        <svg class="brand-logo-svg" viewBox="0 0 160 100" fill="none" xmlns="http://w3.org">
+            <!-- 远景微型山脊 -->
+            <path d="M15 65 L40 52 L60 65" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/>
+            <!-- 次主峰等高线 -->
+            <path d="M35 65 L70 33 L92 56 L120 65" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+            <!-- 核心主断崖山巅骨架 -->
+            <path d="M25 65 Q58 41 L73 20 Q82 37 L87 32 Q98 48 Q118 58 135 65" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- 商标内置文字：极具大牌工业感的纯白无衬线等宽拉伸字体 -->
+            <text x="80" y="88" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="800" letter-spacing="3" text-anchor="middle">MARS.OUTDOOR</text>
         </svg>
 
+        <!-- 外部占位标题，样式中已设置为隐藏，确保不与商标文字冲突 -->
         <h1 class="brand-header">MARS.OUTDOOR</h1>
 
         <div class="slogan">步入极致纯粹 · 去旷野寻找你的火星</div>
