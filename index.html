@@ -1,178 +1,225 @@
-<script>
-  // 网页加载后，自动全网抓取并强制替换 Logo 文字与样式
-  document.addEventListener("DOMContentLoaded", function() {
-    // 1. 尝试寻找所有包含 MARS.EXPLORE 的地方并替换
-    document.body.innerHTML = document.body.innerHTML.replace(/MARS\.EXPLORE/g, `
-      <div style="display: inline-flex; flex-direction: column; align-items: center; font-family: 'Helvetica Neue', Arial, sans-serif; vertical-align: middle;">
-        <span style="font-size: 13px; color: #ffffff; font-weight: 500; letter-spacing: 2px; margin-bottom: 3px; opacity: 0.9;">火星户外探索频道</span>
-        <h1 style="font-size: calc(16px + 0.8vw); color: #ffffff; font-weight: 800; letter-spacing: 3px; margin: 0; transform: scale(0.85); transform-origin: top center; display: inline-block;">MARS.OUTDOOR</h1>
-      </div>
-    `);
-  });
-</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARS.EXPLORE | 火星户外探索频道</title>
+    <title>MARS.OUTDOOR | 火星户外探索频道</title>
     <style>
-        /* 延续极致纯粹的暗黑美学 */
-        :root {
-            --bg-color: #050505;
-            --text-primary: #ffffff;
-            --text-secondary: #888888;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* ==================== 1. 网页全局基础样式 ==================== */
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* 极致纯粹的旷野黑底色 */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
 
-        /* HERO SECTION */
-        header {
+        /* 主体内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
             text-align: center;
-            padding: 80px 0 60px 0;
-        }
-        .logo { font-size: 26px; font-weight: 800; letter-spacing: 5px; margin-bottom: 15px; }
-        .subtitle { font-size: 14px; color: var(--text-secondary); letter-spacing: 2px; }
-
-        /* CORE CTA */
-        .cta-box { text-align: center; margin: 60px 0 80px 0; }
-        .btn-primary {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--text-primary);
-            padding: 18px 50px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            background: var(--text-primary);
-            color: var(--bg-color);
         }
 
-        /* 信任背书区标题 */
-        .section-title {
-            font-size: 13px;
-            letter-spacing: 3px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            margin-bottom: 30px;
+        /* ==================== 2. 全新设计的硬核大牌 Logo 区 ==================== */
+        .mars-brand-logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
-        }
-        .section-title::after {
-            content: ''; flex: 1; height: 1px; background: #1a1a1a; margin-left: 15px;
+            margin: 20px 0 40px 0; /* 留出舒适的上下呼吸感 */
         }
 
-        /* 信任背书区：硬核资质布局 */
-        .credentials {
+        /* 顶部微缩中文标签：高级内敛，不抢主标风头 */
+        .mars-brand-logo .ch-badge {
+            font-size: 11px;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 6px;       /* 宽字距，营造高级电台/频道质感 */
+            text-indent: 6px;          /* 完美修正居中对齐 */
+            margin-bottom: 14px;
+            opacity: 0.55;             /* 半透明柔和灰色 */
+        }
+
+        /* 英文主标题：横向舒展、纵向微压，始祖鸟山系工业风 */
+        .mars-brand-logo .en-main {
+            font-size: 32px;
+            color: #ffffff;
+            font-weight: 900;          /* 极粗字体，充满力量感 */
+            letter-spacing: 8px;       /* 字母留白，旷野的空旷感 */
+            text-indent: 8px;          /* 完美修正居中对齐 */
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+            transform: scale(0.8, 0.85); /* 经典的高端奢侈户外排版压扁动效 */
+            transform-origin: center top;
+        }
+
+        /* 副标题标语 */
+        .slogan {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 300;
+            letter-spacing: 3px;
+            opacity: 0.7;
+            margin-bottom: 80px;
+        }
+
+        /* ==================== 3. 按钮与核心版块样式 ==================== */
+        /* 立即报名按钮 */
+        .cta-btn {
+            display: inline-block;
+            border: 1px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 45px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 120px;
+        }
+        .cta-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* 核心指标版块 */
+        .standards-section {
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #ffffff;
+            opacity: 0.4;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        /* 四大核心网格布局 */
+        .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 60px;
+            gap: 40px;
         }
-        .cred-card {
-            border: 1px solid #1a1a1a;
-            padding: 25px;
-            background: #0a0a0a;
+        .grid-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            text-align: left;
         }
-        .cred-card h3 { font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
-        .cred-card p { font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
-
-        /* 微信专属弹窗组件 */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: #111; border: 1px solid #222;
-            padding: 35px 30px; text-align: center; max-width: 90%; width: 320px;
-            position: relative;
-        }
-        .modal-qrcode { width: 200px; height: 200px; margin: 20px 0; border: 1px solid #333; }
-        .modal-text { font-size: 13px; color: var(--text-secondary); letter-spacing: 1px; line-height: 1.6; }
-        .close-btn {
-            position: absolute; top: 10px; right: 15px;
-            font-size: 24px; color: var(--text-secondary); cursor: pointer;
+        .item-desc {
+            font-size: 14px;
+            color: #ffffff;
+            opacity: 0.6;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        @media (max-width: 600px) {
-            .credentials { grid-template-columns: 1fr; }
-            header { padding: 40px 0; }
-            .cta-box { margin: 40px 0 60px 0; }
+        /* ==================== 4. 📱 智能手机移动端响应式完美适配 ==================== */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 50px 20px;
+            }
+            /* 手机端 Logo 精细紧凑缩放，绝对不折行 */
+            .mars-brand-logo .ch-badge {
+                font-size: 9px;
+                letter-spacing: 4px;
+                text-indent: 4px;
+                margin-bottom: 8px;
+            }
+            .mars-brand-logo .en-main {
+                font-size: 22px;
+                letter-spacing: 5px;
+                text-indent: 5px;
+                transform: scale(0.9, 0.9);
+            }
+            .slogan {
+                font-size: 13px;
+                letter-spacing: 2px;
+                margin-bottom: 50px;
+            }
+            .cta-btn {
+                margin-bottom: 8px;
+                width: 80px;
+                box-sizing: border-box;
+                padding: 15px 0;
+                text-align: center;
+            }
+            /* 手机端网格变单列 */
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .grid-item {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- 头部品牌形象 -->
-        <header>
-            <div class="logo">MARS.EXPLORE</div>
-            <div class="subtitle">步入极致纯粹 · 去旷野寻找你的火星</div>
-        </header>
-
-        <!-- 核心行动点 -->
-        <div class="cta-box">
-            <button class="btn-primary" onclick="openModal()">立即报名 / 获取路书 ⚡</button>
+        
+        <!-- 全新高端设计的 Logo 主模块 -->
+        <div class="mars-brand-logo">
+            <span class="ch-badge">火星户外探索频道</span>
+            <h1 class="en-main">MARS.OUTDOOR</h1>
         </div>
 
-        <!-- 信任背书：专业资质 -->
-        <div class="section-title">硬核安全 / Standards</div>
-        <div class="credentials">
-            <div class="cred-card">
-                <h3>中登协认证领队</h3>
-                <p>所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
-            </div>
-            <div class="cred-card">
-                <h3>WFA 荒野医疗保障</h3>
-                <p>领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
-            </div>
-            <div class="cred-card">
-                <h3>卫星通信覆盖</h3>
-                <p>无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
-            </div>
-            <div class="cred-card">
-                <h3>极致纯粹体验</h3>
-                <p>独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
+        <!-- 标语 -->
+        <p class="slogan">步入极致纯粹 · 去旷野寻找你的火星</p>
+
+        <!-- 行动按钮 -->
+        <a href="#" class="cta-btn">立即报名 / 获取路书 ⚡</a>
+
+        <!-- 硬核安全指标内容区 -->
+        <div class="standards-section">
+            <div class="section-title">硬核安全 / Standards</div>
+            
+            <div class="grid-container">
+                <!-- 1. 中登协认证领队 -->
+                <div class="grid-item">
+                    <h3 class="item-title">中登协认证领队</h3>
+                    <p class="item-desc">所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
+                </div>
+                
+                <!-- 2. WFA 荒野医疗保障 -->
+                <div class="grid-item">
+                    <h3 class="item-title">WFA 荒野医疗保障</h3>
+                    <p class="item-desc">领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
+                </div>
+                
+                <!-- 3. 卫星通信覆盖 -->
+                <div class="grid-item">
+                    <h3 class="item-title">卫星通信覆盖</h3>
+                    <p class="item-desc">无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
+                </div>
+                
+                <!-- 4. 极致纯粹体验 -->
+                <div class="grid-item">
+                    <h3 class="item-title">极致纯粹体验</h3>
+                    <p class="item-desc">独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
+                </div>
             </div>
         </div>
+
     </div>
 
-    <!-- 微信专属弹窗 -->
-    <div class="modal-overlay" id="qrModal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h4 style="font-size: 15px; letter-spacing: 1px;">连接火星领队</h4>
-            <!-- 请确保你的客服二维码图片命名为 qrcode.jpg 并放在同级目录下 -->
-            <img src="qrcode.jpg" alt="微信客服二维码" class="modal-qrcode">
-            <p class="modal-text">长按上方二维码识别</p>
-            <p class="modal-text" style="margin-top: 5px; color: #fff;">添加专属领队，获取最新详细路书与近期排期</p>
-        </div>
-    </div>
-
-    <script>
-        function openModal() {
-            document.getElementById('qrModal').classList.add('active');
-        }
-        function closeModal(e) {
-            document.getElementById('qrModal').classList.remove('active');
-        }
-    </script>
 </body>
 </html>
