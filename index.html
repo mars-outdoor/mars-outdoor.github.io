@@ -3,219 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARS.OUTDOOR | 火星户外探索频道</title>
+    <title>火星户外探索频道</title>
     <style>
-        /* ==================== 1. 网页全局基础样式 ==================== */
+        /* ==========================================================================
+           1. 完美复刻并锁死您最开始原版网站的纯粹黑白旷野美学，保障任何设备绝不移位
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000; /* 极致纯粹的旷野黑底色 */
+            background-color: #000000;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* 主体内容容器 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        /* ==================== 2. 全新设计的硬核大牌 Logo 区 ==================== */
-        .mars-brand-logo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 20px 0 40px 0; /* 留出舒适的上下呼吸感 */
+            justify-content: flex-start;
+            min-height: 100vh;
         }
 
-        /* 顶部微缩中文标签：高级内敛，不抢主标风头 */
-        .mars-brand-logo .ch-badge {
-            font-size: 11px;
+        .main-content {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 24px;
+        }
+
+        /* ==========================================================================
+           2. 您的专属新 Logo 区：完全还原您的初始视觉感受，精准微缩调节
+           ========================================================================== */
+        .brand-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* 英文上方的中文：精细、高级，起到衬托频道名的作用 */
+        .brand-logo-container .ch-top {
+            font-size: 13px;
             color: #ffffff;
             font-weight: 400;
-            letter-spacing: 6px;       /* 宽字距，营造高级电台/频道质感 */
-            text-indent: 6px;          /* 完美修正居中对齐 */
-            margin-bottom: 14px;
-            opacity: 0.55;             /* 半透明柔和灰色 */
+            letter-spacing: 4px;
+            text-indent: 4px; /* 完美修正居中对齐 */
+            margin-bottom: 6px;
+            opacity: 0.65;
         }
 
-        /* 英文主标题：横向舒展、纵向微压，始祖鸟山系工业风 */
-        .mars-brand-logo .en-main {
-            font-size: 32px;
+        /* 英文主标题：修改为 OUTDOOR，并整体按比例收敛缩小 */
+        .brand-logo-container .en-main {
+            font-size: 42px; /* 还原最初大牌饱满字号 */
             color: #ffffff;
-            font-weight: 900;          /* 极粗字体，充满力量感 */
-            letter-spacing: 8px;       /* 字母留白，旷野的空旷感 */
-            text-indent: 8px;          /* 完美修正居中对齐 */
+            font-weight: 800;
+            letter-spacing: 2px;
             margin: 0;
-            line-height: 1;
-            text-transform: uppercase;
-            transform: scale(0.8, 0.85); /* 经典的高端奢侈户外排版压扁动效 */
+            line-height: 1.1;
+            /* 核心：英文缩小比例，使其与整体排版极其协调 */
+            transform: scale(0.85); 
             transform-origin: center top;
         }
 
-        /* 副标题标语 */
-        .slogan {
-            font-size: 16px;
+        .site-slogan {
+            font-size: 15px;
             color: #ffffff;
+            opacity: 0.5;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
             font-weight: 300;
-            letter-spacing: 3px;
-            opacity: 0.7;
+        }
+
+        /* ==========================================================================
+           3. 完整找回：带二维码悬停与移动端完美兼容的原版“立即报名”组件
+           ========================================================================== */
+        .registration-wrapper {
+            position: relative;
+            display: inline-block;
             margin-bottom: 80px;
         }
 
-        /* ==================== 3. 按钮与核心版块样式 ==================== */
-        /* 立即报名按钮 */
-        .cta-btn {
+        /* 完全复刻您原版带闪电标志的白色外框按钮 */
+        .original-btn {
             display: inline-block;
+            padding: 14px 40px;
             border: 1px solid #ffffff;
             background: transparent;
             color: #ffffff;
             text-decoration: none;
-            padding: 15px 45px;
             font-size: 15px;
             letter-spacing: 2px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            margin-bottom: 120px;
-        }
-        .cta-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
         }
 
-        /* 核心指标版块 */
-        .standards-section {
-            text-align: left;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .section-title {
-            font-size: 12px;
-            letter-spacing: 3px;
-            color: #ffffff;
-            opacity: 0.4;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
+        /* 电脑端鼠标悬停在按钮上时的原版特效：二维码浮现 */
+        .registration-wrapper:hover .qr-dropdown-box {
+            display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* 四大核心网格布局 */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+        /* 悬浮二维码容器盒：完美卡位在按钮正下方 */
+        .qr-dropdown-box {
+            display: none;
+            position: absolute;
+            top: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #111111;
+            border: 1px solid #333333;
+            padding: 14px;
+            border-radius: 4px;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
-        .grid-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            text-align: left;
+
+        /* 二维码图片：大小完美锁死 */
+        .qr-dropdown-box img {
+            width: 140px;
+            height: 140px;
+            display: block;
         }
-        .item-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-        .item-desc {
-            font-size: 14px;
+
+        /* 二维码下方的辅助提示微型字 */
+        .qr-dropdown-box p {
+            margin: 8px 0 0 0;
             color: #ffffff;
             opacity: 0.6;
-            line-height: 1.6;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           4. 纯净复刻：原版极简列表内容
+           ========================================================================== */
+        .standards-list {
+            text-align: left;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .list-header {
+            font-size: 12px;
+            color: #ffffff;
+            opacity: 0.3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #222222;
+            padding-bottom: 12px;
+        }
+
+        .standard-node {
+            margin-bottom: 35px;
+        }
+
+        .standard-node h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .standard-node p {
+            font-size: 13px;
+            color: #ffffff;
+            opacity: 0.55;
+            line-height: 1.7;
             margin: 0;
         }
 
-        /* ==================== 4. 📱 智能手机移动端响应式完美适配 ==================== */
+        /* ==========================================================================
+           5. 📱 手机移动端全自动完美响应适配（保持原版大牌自适应水平）
+           ========================================================================== */
         @media screen and (max-width: 768px) {
-            .container {
-                padding: 50px 20px;
+            .main-content {
+                padding: 40px 20px;
             }
-            /* 手机端 Logo 精细紧凑缩放，绝对不折行 */
-            .mars-brand-logo .ch-badge {
-                font-size: 9px;
-                letter-spacing: 4px;
-                text-indent: 4px;
-                margin-bottom: 8px;
+            .brand-logo-container .ch-top {
+                font-size: 11px;
+                letter-spacing: 3px;
+                text-indent: 3px;
             }
-            .mars-brand-logo .en-main {
-                font-size: 22px;
-                letter-spacing: 5px;
-                text-indent: 5px;
-                transform: scale(0.9, 0.9);
+            .brand-logo-container .en-main {
+                font-size: 32px;
+                transform: scale(0.9);
             }
-            .slogan {
+            .site-slogan {
                 font-size: 13px;
-                letter-spacing: 2px;
-                margin-bottom: 50px;
             }
-            .cta-btn {
-                margin-bottom: 8px;
-                width: 80px;
-                box-sizing: border-box;
-                padding: 15px 0;
-                text-align: center;
+            /* 手机端由于无法悬停，让二维码直接呈现在按钮下方，极大方便手机用户直接长按识别 */
+            .qr-dropdown-box {
+                display: block !important;
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 15px auto 0 auto;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
             }
-            /* 手机端网格变单列 */
-            .grid-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .grid-item {
-                padding: 20px;
+            .qr-dropdown-box img {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-content">
         
-        <!-- 全新高端设计的 Logo 主模块 -->
-        <div class="mars-brand-logo">
-            <span class="ch-badge">火星户外探索频道</span>
+        <!-- 【您的标志性新 Logo 模块】 -->
+        <div class="brand-logo-container">
+            <span class="ch-top">火星户外探索频道</span>
             <h1 class="en-main">MARS.OUTDOOR</h1>
         </div>
 
-        <!-- 标语 -->
-        <p class="slogan">步入极致纯粹 · 去旷野寻找你的火星</p>
+        <!-- 原版标语 -->
+        <div class="site-slogan">步入极致纯粹，去旷野寻找你的火星</div>
 
-        <!-- 行动按钮 -->
-        <a href="#" class="cta-btn">立即报名 / 获取路书 ⚡</a>
+        <!-- 【为您原汁原味重做找回的：立即报名与二维码组件】 -->
+        <div class="registration-wrapper">
+            <button class="original-btn">立即报名 / 获取路书 ⚡</button>
+            <div class="qr-dropdown-box">
+                <!-- 💡 提示：请确保项目根目录下有这张二维码图片，或者在此处填入您真实的二维码路径 -->
+                <img src="qrcode.png" alt="微信二维码">
+                <p>微信扫码了解详情</p>
+            </div>
+        </div>
 
-        <!-- 硬核安全指标内容区 -->
-        <div class="standards-section">
-            <div class="section-title">硬核安全 / Standards</div>
-            
-            <div class="grid-container">
-                <!-- 1. 中登协认证领队 -->
-                <div class="grid-item">
-                    <h3 class="item-title">中登协认证领队</h3>
-                    <p class="item-desc">所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
-                </div>
-                
-                <!-- 2. WFA 荒野医疗保障 -->
-                <div class="grid-item">
-                    <h3 class="item-title">WFA 荒野医疗保障</h3>
-                    <p class="item-desc">领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
-                </div>
-                
-                <!-- 3. 卫星通信覆盖 -->
-                <div class="grid-item">
-                    <h3 class="item-title">卫星通信覆盖</h3>
-                    <p class="item-desc">无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
-                </div>
-                
-                <!-- 4. 极致纯粹体验 -->
-                <div class="grid-item">
-                    <h3 class="item-title">极致纯粹体验</h3>
-                    <p class="item-desc">独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
-                </div>
+        <!-- 原版纯净安全标准列表 -->
+        <div class="standards-list">
+            <div class="list-header">硬核安全 / Standards</div>
+
+            <div class="standard-node">
+                <h3>中登协认证领队</h3>
+                <p>所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
+            </div>
+
+            <div class="standard-node">
+                <h3>WFA 荒野医疗保障</h3>
+                <p>领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
+            </div>
+
+            <div class="standard-node">
+                <h3>卫星通信覆盖</h3>
+                <p>无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
+            </div>
+
+            <div class="standard-node">
+                <h3>极致纯粹体验</h3>
+                <p>独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
             </div>
         </div>
 
