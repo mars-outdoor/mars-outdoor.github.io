@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>火星户外探索频道</title>
+    <title>MARS.OUTDOOR</title>
     <style>
-        /* ==========================================================================
-           1. 完美复刻并锁死您最开始原版网站的纯粹黑白旷野美学，保障任何设备绝不移位
-           ========================================================================== */
-        * {
-            box-sizing: border-box;
-        }
-
+        /* 1. 百分之百纯净还原您最开始的原始网站全局样式 */
         body {
             margin: 0;
             padding: 0;
@@ -22,53 +16,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
         }
 
-        .main-content {
+        .container {
             text-align: center;
             max-width: 800px;
             width: 100%;
-            padding: 60px 24px;
+            padding: 80px 24px;
         }
 
-        /* ==========================================================================
-           2. 您的专属新 Logo 区：完全还原您的初始视觉感受，精准微缩调节
-           ========================================================================== */
-        .brand-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        /* 英文上方的中文：精细、高级，起到衬托频道名的作用 */
-        .brand-logo-container .ch-top {
-            font-size: 13px;
-            color: #ffffff;
-            font-weight: 400;
-            letter-spacing: 4px;
-            text-indent: 4px; /* 完美修正居中对齐 */
-            margin-bottom: 6px;
-            opacity: 0.65;
-        }
-
-        /* 英文主标题：修改为 OUTDOOR，并整体按比例收敛缩小 */
-        .brand-logo-container .en-main {
-            font-size: 42px; /* 还原最初大牌饱满字号 */
-            color: #ffffff;
+        /* 2. 仅仅微调您的新主标题：只改英文，删除中文，保留大牌纯粹感 */
+        .brand-header {
+            font-size: 42px; /* 恢复您原版极具张力的大字号 */
             font-weight: 800;
             letter-spacing: 2px;
-            margin: 0;
+            margin: 0 0 24px 0;
             line-height: 1.1;
-            /* 核心：英文缩小比例，使其与整体排版极其协调 */
-            transform: scale(0.85); 
-            transform-origin: center top;
         }
 
-        .site-slogan {
+        .slogan {
             font-size: 15px;
             color: #ffffff;
             opacity: 0.5;
@@ -77,17 +43,15 @@
             font-weight: 300;
         }
 
-        /* ==========================================================================
-           3. 完整找回：带二维码悬停与移动端完美兼容的原版“立即报名”组件
-           ========================================================================== */
-        .registration-wrapper {
+        /* 3. 完美复原：带二维码悬停触发的原版按钮组件 */
+        .cta-wrapper {
             position: relative;
             display: inline-block;
             margin-bottom: 80px;
         }
 
-        /* 完全复刻您原版带闪电标志的白色外框按钮 */
-        .original-btn {
+        /* 原版白框带闪电报名按钮 */
+        .cta-btn {
             display: inline-block;
             padding: 14px 40px;
             border: 1px solid #ffffff;
@@ -101,15 +65,13 @@
             transition: background-color 0.2s, color 0.2s;
         }
 
-        /* 电脑端鼠标悬停在按钮上时的原版特效：二维码浮现 */
-        .registration-wrapper:hover .qr-dropdown-box {
+        /* 鼠标移上去时，隐藏的二维码盒子会显示出来 */
+        .cta-wrapper:hover .qr-box {
             display: block;
-            opacity: 1;
-            visibility: visible;
         }
 
-        /* 悬浮二维码容器盒：完美卡位在按钮正下方 */
-        .qr-dropdown-box {
+        /* 原版悬浮二维码定位盒子 */
+        .qr-box {
             display: none;
             position: absolute;
             top: 105%;
@@ -120,36 +82,30 @@
             padding: 14px;
             border-radius: 4px;
             z-index: 999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
 
-        /* 二维码图片：大小完美锁死 */
-        .qr-dropdown-box img {
+        .qr-box img {
             width: 140px;
             height: 140px;
             display: block;
         }
 
-        /* 二维码下方的辅助提示微型字 */
-        .qr-dropdown-box p {
+        .qr-box p {
             margin: 8px 0 0 0;
             color: #ffffff;
             opacity: 0.6;
             font-size: 11px;
-            letter-spacing: 1px;
             text-align: center;
         }
 
-        /* ==========================================================================
-           4. 纯净复刻：原版极简列表内容
-           ========================================================================== */
-        .standards-list {
+        /* 4. 原版纯净硬核安全板块样式 */
+        .standards {
             text-align: left;
             max-width: 650px;
             margin: 0 auto;
         }
 
-        .list-header {
+        .standards-title {
             font-size: 12px;
             color: #ffffff;
             opacity: 0.3;
@@ -160,18 +116,18 @@
             padding-bottom: 12px;
         }
 
-        .standard-node {
+        .item {
             margin-bottom: 35px;
         }
 
-        .standard-node h3 {
+        .item h3 {
             font-size: 16px;
             font-weight: 600;
             margin: 0 0 10px 0;
             letter-spacing: 1px;
         }
 
-        .standard-node p {
+        .item p {
             font-size: 13px;
             color: #ffffff;
             opacity: 0.55;
@@ -179,28 +135,13 @@
             margin: 0;
         }
 
-        /* ==========================================================================
-           5. 📱 手机移动端全自动完美响应适配（保持原版大牌自适应水平）
-           ========================================================================== */
+        /* 手机端响应式自动回退（保障手机上按钮和二维码体验） */
         @media screen and (max-width: 768px) {
-            .main-content {
-                padding: 40px 20px;
-            }
-            .brand-logo-container .ch-top {
-                font-size: 11px;
-                letter-spacing: 3px;
-                text-indent: 3px;
-            }
-            .brand-logo-container .en-main {
-                font-size: 32px;
-                transform: scale(0.9);
-            }
-            .site-slogan {
-                font-size: 13px;
-            }
-            /* 手机端由于无法悬停，让二维码直接呈现在按钮下方，极大方便手机用户直接长按识别 */
-            .qr-dropdown-box {
-                display: block !important;
+            .container { padding: 40px 20px; }
+            .brand-header { font-size: 32px; }
+            .slogan { font-size: 13px; }
+            .qr-box {
+                display: block;
                 position: relative;
                 top: 0;
                 left: 0;
@@ -208,62 +149,51 @@
                 margin: 15px auto 0 auto;
                 background: transparent;
                 border: none;
-                box-shadow: none;
                 padding: 0;
-                opacity: 1;
-                visibility: visible;
             }
-            .qr-dropdown-box img {
-                width: 120px;
-                height: 120px;
-                margin: 0 auto;
-            }
+            .qr-box img { width: 120px; height: 120px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-content">
+    <div class="container">
         
-        <!-- 【您的标志性新 Logo 模块】 -->
-        <div class="brand-logo-container">
-            <span class="ch-top">火星户外探索频道</span>
-            <h1 class="en-main">MARS.OUTDOOR</h1>
-        </div>
+        <!-- 仅仅修改了这行英文，没有任何多余中文打扰 -->
+        <h1 class="brand-header">MARS.OUTDOOR</h1>
 
         <!-- 原版标语 -->
-        <div class="site-slogan">步入极致纯粹，去旷野寻找你的火星</div>
+        <div class="slogan">步入极致纯粹，去旷野寻找你的火星</div>
 
-        <!-- 【为您原汁原味重做找回的：立即报名与二维码组件】 -->
-        <div class="registration-wrapper">
-            <button class="original-btn">立即报名 / 获取路书 ⚡</button>
-            <div class="qr-dropdown-box">
-                <!-- 💡 提示：请确保项目根目录下有这张二维码图片，或者在此处填入您真实的二维码路径 -->
+        <!-- 完好如初的立即报名组件与二维码，请确保根目录下有 qrcode.png 文件 -->
+        <div class="cta-wrapper">
+            <button class="cta-btn">立即报名 / 获取路书 ⚡</button>
+            <div class="qr-box">
                 <img src="qrcode.png" alt="微信二维码">
                 <p>微信扫码了解详情</p>
             </div>
         </div>
 
-        <!-- 原版纯净安全标准列表 -->
-        <div class="standards-list">
-            <div class="list-header">硬核安全 / Standards</div>
+        <!-- 原版四项基本介绍 -->
+        <div class="standards">
+            <div class="standards-title">硬核安全 / Standards</div>
 
-            <div class="standard-node">
+            <div class="item">
                 <h3>中登协认证领队</h3>
                 <p>所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
             </div>
 
-            <div class="standard-node">
+            <div class="item">
                 <h3>WFA 荒野医疗保障</h3>
                 <p>领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
             </div>
 
-            <div class="standard-node">
+            <div class="item">
                 <h3>卫星通信覆盖</h3>
                 <p>无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
             </div>
 
-            <div class="standard-node">
+            <div class="item">
                 <h3>极致纯粹体验</h3>
                 <p>独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
             </div>
