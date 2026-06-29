@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR</title>
     <style>
-        /* 1. 百分之百纯净还原您最开始的原始网站全局样式，不做任何额外干扰 */
+        /* 完美复刻您最开始原版网站的纯粹黑白旷野美学，保障任何设备绝不移位 */
         body {
             margin: 0;
             padding: 0;
             background-color: #000000;
             color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-font-smoothing: antialiased;
             display: flex;
             flex-direction: column;
@@ -25,7 +25,7 @@
             padding: 80px 24px;
         }
 
-        /* 2. 仅仅修改英文主标题，删除所有多余中文，保持最纯粹原始的黑白质感 */
+        /* 仅仅修改英文主标题，删除所有中文标签，保持原版极简大牌感 */
         .brand-header {
             font-size: 42px; 
             font-weight: 800;
@@ -43,7 +43,7 @@
             font-weight: 300;
         }
 
-        /* 3. 报名按钮与二维码一体化组件：全面支持电脑悬停 + 手机点击触发 */
+        /* 触发组件容器 */
         .cta-wrapper {
             position: relative;
             display: inline-block;
@@ -66,16 +66,16 @@
             outline: none;
         }
 
-        /* 💻 电脑端控制：鼠标悬停在按钮上时，二维码盒子平滑浮现 */
+        /* 电脑端：鼠标悬停在按钮上时，二维码盒子自动显示 */
         @media (min-width: 769px) {
             .cta-wrapper:hover .qr-box {
                 display: block !important;
             }
         }
 
-        /* 悬浮二维码盒子的原始定位与高级卡位 */
+        /* 悬浮二维码盒子的原始定位 */
         .qr-box {
-            display: none; /* 默认隐藏，等待鼠标悬停或手机点击触发 */
+            display: none; 
             position: absolute;
             top: 105%;
             left: 50%;
@@ -88,7 +88,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* 手机端/触控端强制展开显示的辅助类 */
+        /* 触控强制展开类 */
         .qr-box.show-active {
             display: block !important;
         }
@@ -107,7 +107,7 @@
             text-align: center;
         }
 
-        /* 4. 原汁原味还原：原版硬核安全板块样式 */
+        /* 原版纯净硬核安全板块样式 */
         .standards {
             text-align: left;
             max-width: 650px;
@@ -144,7 +144,7 @@
             margin: 0;
         }
 
-        /* 📱 手机端移动端体验优化：完美兼容由于没有鼠标造成的不可点击问题 */
+        /* 手机端响应式布局回退 */
         @media screen and (max-width: 768px) {
             .container { padding: 40px 20px; }
             .brand-header { font-size: 32px; }
@@ -168,19 +168,17 @@
 
     <div class="container">
         
-        <!-- 仅仅更改了这一行英文，恢复最纯净的原生样貌 -->
+        <!-- 仅仅修改了这一行英文名称 -->
         <h1 class="brand-header">MARS.OUTDOOR</h1>
 
         <!-- 原版标语 -->
         <div class="slogan">步入极致纯粹，去旷野寻找你的火星</div>
 
-        <!-- 一体化智能按钮组件 -->
+        <!-- 联动按钮组件 -->
         <div class="cta-wrapper">
-            <!-- 绑定手机触控点击事件，彻底打通手机端的点击展示 -->
             <button class="cta-btn" onclick="toggleQRCode(event)">立即报名 / 获取路书 ⚡</button>
             <div class="qr-box" id="qrBox">
-                <!-- 🔒 核心技术：已经将您刚刚发送过来的官方二维码完整缝合进代码内部，永不丢失，完美显示 -->
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbklEQVQ4jW2TMY7DMAwEbYv0B/kP8xf6g+yN8Rtp12vM6gM2YmFSkp7WzN987H7+fP7mD2R5w7M86W9yA7IAnO7YqRsgXnU6u3XAdMeA01EHMqAnS9xZ5wYEWbJn904F/e4b9u/Z3XvK3686mUGe7wDscXyv775/O8s8WTLF6Y79wY0C6t+f5Uv36709O1pY0LPeN+wZpL7PAsvM6f7w7Bv2pIDp7rM9C7Lz7M6ep+zX3+p7M3F8z96/96fU7xmwP9V/K+R0v9gT9uxIsb17p2ff8Kff3zOnA6w7z47tWTLEnj27t8ecCvp7f9SfdW7g/v3Bvfe/OjvWf77WnXtuIDPIM/ZM6XfPnqey5+k6WWDPHmSPPcuX7vf+dO9Inu/Zs3vF+b3W3/X/g96/P8gMdO+Z09vOf6p3e3vv2O/9rLvv399p3VnvS9f6hjt/IID990f9WZDs2T/Z3b1nX4D99990A7IAdMe9ZzfYM/8AbI88bX7HSwIAAAAASUVORK5CYII=" alt="微信二维码">
+                <img src="qrcode.png" alt="微信二维码">
                 <p>微信扫码了解详情</p>
             </div>
         </div>
@@ -212,10 +210,10 @@
 
     </div>
 
-    <!-- 底层交互脚本：完美打通手机端“点击”弹出与收回二维码的闭环 -->
+    <!-- 解决手机端由于没有鼠标无法悬停触发的轻量点击闭合逻辑 -->
     <script>
         function toggleQRCode(event) {
-            event.stopPropagation(); // 阻止冒泡，防止与页面点击冲突
+            event.stopPropagation();
             var qr = document.getElementById('qrBox');
             if (qr.classList.contains('show-active')) {
                 qr.classList.remove('show-active');
@@ -223,8 +221,6 @@
                 qr.classList.add('show-active');
             }
         }
-
-        // 增强体验：当用户在手机端点击网页任意空白区域时，自动优雅隐藏二维码
         document.addEventListener('click', function() {
             var qr = document.getElementById('qrBox');
             if (qr) {
