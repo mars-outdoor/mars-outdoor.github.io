@@ -1,3 +1,17 @@
+<!-- 
+==========================================================================
+【MARS.OUTDOOR 官方源码极简大牌美学锁死备注 - 严禁 AI 随意重构】
+1. 品牌美学：主标题已由 EXPLORE 改为 MARS.OUTDOOR。删除了所有多余中文标签。
+2. 标志设计：顶部嵌入了融合方案一与方案二的“极地罗盘断崖”纯白极简矢量Logo。
+3. 全局样式：纯黑底（#000000）、纯白字。走类似始祖鸟、Patagonia 的旷野冷峻极简风。
+4. 核心功能：
+   - 报名按钮（.cta-btn）与二维码盒子（.qr-box）一体化。
+   - 电脑端靠 :hover 悬停平滑浮现；手机端靠绑定的 toggleQRCode(event) 触控点击弹出。
+   - 二维码关联路径必须锁死为：qrcode.jpg（不可错写为 png）。
+   - 二维码下方专属高级文案确定为选项C：“微信扫码 · 获取官方路书”。
+5. 下方板块：原汁原味锁死四项硬核安全（中登协、WFA医疗、卫星、纯粹体验），严禁擅自修改字句或套用方框网格。
+==========================================================================
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,7 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR</title>
     <style>
-        /* 1. 百分之百纯净还原您最开始的原始网站全局样式，不加任何突兀的外框 */
         body {
             margin: 0;
             padding: 0;
@@ -25,7 +38,14 @@
             padding: 80px 24px;
         }
 
-        /* 2. 仅仅修改英文主标题为 OUTDOOR，保持原厂极简视觉大牌感 */
+        /* 📐 新加入的罗盘断崖 Logo 专属高级样式 */
+        .brand-logo-svg {
+            width: 54px;
+            height: 54px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
         .brand-header {
             font-size: 42px; 
             font-weight: 800;
@@ -43,14 +63,12 @@
             font-weight: 300;
         }
 
-        /* 3. 报名按钮与二维码一体化组件：全面支持电脑悬停 + 手机点击触发 */
         .cta-wrapper {
             position: relative;
             display: inline-block;
             margin-bottom: 80px;
         }
 
-        /* 原版带闪电白色外框按钮 */
         .cta-btn {
             display: inline-block;
             padding: 14px 40px;
@@ -66,16 +84,14 @@
             outline: none;
         }
 
-        /* 💻 电脑端：鼠标悬停在按钮上时，二维码盒子自动平滑浮现 */
         @media (min-width: 769px) {
             .cta-wrapper:hover .qr-box {
                 display: block !important;
             }
         }
 
-        /* 悬浮二维码盒子的原始优雅卡位 */
         .qr-box {
-            display: none; /* 默认隐藏 */
+            display: none; 
             position: absolute;
             top: 105%;
             left: 50%;
@@ -88,7 +104,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* 触控端强制展开显示的辅助类 */
         .qr-box.show-active {
             display: block !important;
         }
@@ -99,7 +114,6 @@
             display: block;
         }
 
-        /* ⭐ 二维码下方的文字专属样式，极致内敛 */
         .qr-box p {
             margin: 8px 0 0 0;
             color: #ffffff;
@@ -110,7 +124,6 @@
             white-space: nowrap;
         }
 
-        /* 4. 原汁原味还原：原版硬核安全板块样式 */
         .standards {
             text-align: left;
             max-width: 650px;
@@ -147,11 +160,11 @@
             margin: 0;
         }
 
-        /* 📱 手机端移动端体验优化 */
         @media screen and (max-width: 768px) {
             .container { padding: 40px 20px; }
             .brand-header { font-size: 32px; }
             .slogan { font-size: 13px; }
+            .brand-logo-svg { width: 44px; height: 44px; margin-bottom: 15px; }
             .qr-box {
                 position: relative;
                 top: 0;
@@ -171,25 +184,29 @@
 
     <div class="container">
         
-        <!-- 只精准将英文标题修改为新英文 -->
+        <!-- 🎨 完美嵌入的“极地罗盘断崖”纯白极简矢量设计商标 -->
+        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
+            <!-- 外圈极细圆形：罗盘信号轨道 -->
+            <circle cx="50" cy="50" r="46" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.6"/>
+            <!-- 核心断崖峰峦折线与攀登上升轨迹 -->
+            <path d="M24 68 L42 42 L52 52 L76 26" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M38 68 L54 48 L64 58 L72 50" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+            <!-- 顶峰冲顶破空点 -->
+            <circle cx="76" cy="26" r="2" fill="#ffffff"/>
+        </svg>
+
         <h1 class="brand-header">MARS.OUTDOOR</h1>
 
-        <!-- 一模一样的原厂标语 -->
         <div class="slogan">步入极致纯粹 · 去旷野寻找你的火星</div>
 
-        <!-- 一体化智能按钮组件，直接对接您后台已存的 qrcode.jpg -->
         <div class="cta-wrapper">
             <button class="cta-btn" onclick="toggleQRCode(event)">立即报名 / 获取路书 ⚡</button>
             <div class="qr-box" id="qrBox">
                 <img src="qrcode.jpg" alt="微信二维码">
-                
-                <!-- 💬 选项C文案已完美填入 -->
                 <p>微信扫码 · 获取官方路书</p>
-                
             </div>
         </div>
 
-        <!-- 原版四项基本介绍 -->
         <div class="standards">
             <div class="standards-title">硬核安全 / Standards</div>
 
@@ -216,7 +233,6 @@
 
     </div>
 
-    <!-- 核心底层脚本：点一下展开，再点一下关闭 -->
     <script>
         function toggleQRCode(event) {
             event.stopPropagation();
