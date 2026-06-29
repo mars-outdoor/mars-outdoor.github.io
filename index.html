@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR</title>
     <style>
-        /* 1. 百分之百纯净还原您最开始的原始网站全局样式 */
+        /* 1. 完全保留原版最纯粹、空灵的旷野黑白美学 */
         body {
             margin: 0;
             padding: 0;
@@ -25,9 +25,9 @@
             padding: 80px 24px;
         }
 
-        /* 2. 仅仅微调您的新主标题：只改英文，删除中文，保留大牌纯粹感 */
+        /* 2. 仅仅修改英文主标题，删掉自作聪明的中文标签，保持大牌极简感 */
         .brand-header {
-            font-size: 42px; /* 恢复您原版极具张力的大字号 */
+            font-size: 42px; 
             font-weight: 800;
             letter-spacing: 2px;
             margin: 0 0 24px 0;
@@ -43,14 +43,14 @@
             font-weight: 300;
         }
 
-        /* 3. 完美复原：带二维码悬停触发的原版按钮组件 */
+        /* 3. 报名按钮与二维码联动组件（支持电脑悬停 + 手机点击） */
         .cta-wrapper {
             position: relative;
             display: inline-block;
             margin-bottom: 80px;
         }
 
-        /* 原版白框带闪电报名按钮 */
+        /* 原版带闪电白色外框按钮 */
         .cta-btn {
             display: inline-block;
             padding: 14px 40px;
@@ -63,16 +63,19 @@
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s;
+            outline: none;
         }
 
-        /* 鼠标移上去时，隐藏的二维码盒子会显示出来 */
-        .cta-wrapper:hover .qr-box {
-            display: block;
+        /* 电脑端：鼠标悬停在按钮上时，二维码盒子自动显示 */
+        @media (min-width: 769px) {
+            .cta-wrapper:hover .qr-box {
+                display: block !important;
+            }
         }
 
-        /* 原版悬浮二维码定位盒子 */
+        /* 悬浮二维码定位盒子样式 */
         .qr-box {
-            display: none;
+            display: none; /* 默认隐藏 */
             position: absolute;
             top: 105%;
             left: 50%;
@@ -82,6 +85,12 @@
             padding: 14px;
             border-radius: 4px;
             z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        /* 控制手机和电脑端二维码盒子强制展开的辅助类 */
+        .qr-box.show-active {
+            display: block !important;
         }
 
         .qr-box img {
@@ -135,13 +144,12 @@
             margin: 0;
         }
 
-        /* 手机端响应式自动回退（保障手机上按钮和二维码体验） */
+        /* 手机端响应式精细优化 */
         @media screen and (max-width: 768px) {
             .container { padding: 40px 20px; }
             .brand-header { font-size: 32px; }
             .slogan { font-size: 13px; }
             .qr-box {
-                display: block;
                 position: relative;
                 top: 0;
                 left: 0;
@@ -150,8 +158,9 @@
                 background: transparent;
                 border: none;
                 padding: 0;
+                box-shadow: none;
             }
-            .qr-box img { width: 120px; height: 120px; margin: 0 auto; }
+            .qr-box img { width: 130px; height: 130px; margin: 0 auto; }
         }
     </style>
 </head>
@@ -159,16 +168,18 @@
 
     <div class="container">
         
-        <!-- 仅仅修改了这行英文，没有任何多余中文打扰 -->
+        <!-- 干净地修改为新英文，绝无任何多余中文干扰 -->
         <h1 class="brand-header">MARS.OUTDOOR</h1>
 
         <!-- 原版标语 -->
         <div class="slogan">步入极致纯粹，去旷野寻找你的火星</div>
 
-        <!-- 完好如初的立即报名组件与二维码，请确保根目录下有 qrcode.png 文件 -->
+        <!-- 联动按钮组件 -->
         <div class="cta-wrapper">
-            <button class="cta-btn">立即报名 / 获取路书 ⚡</button>
-            <div class="qr-box">
+            <!-- 给按钮绑定点击触发逻辑，专门解决手机端“点不开”的问题 -->
+            <button class="cta-btn" onclick="toggleQRCode(event)">立即报名 / 获取路书 ⚡</button>
+            <div class="qr-box" id="qrBox">
+                <!-- 💡 提示：如果图片加载不出来，请在此处把 qrcode.png 改为您项目里真实的二维码文件名 -->
                 <img src="qrcode.png" alt="微信二维码">
                 <p>微信扫码了解详情</p>
             </div>
@@ -200,6 +211,29 @@
         </div>
 
     </div>
+
+    <!-- 解决手机点击的核心底层脚本：点一下展开，再点一下收起 -->
+    <script>
+        function toggleQRCode(event) {
+            // 阻止冒泡，防止事件干扰
+            event.stopPropagation();
+            var qr = document.getElementById('qrBox');
+            // 切换 class 来实现手机端的打开与关闭
+            if (qr.classList.contains('show-active')) {
+                qr.classList.remove('show-active');
+            } else {
+                qr.classList.add('show-active');
+            }
+        }
+
+        // 点击页面其他空白地方时，自动把二维码收起来
+        document.addEventListener('click', function() {
+            var qr = document.getElementById('qrBox');
+            if (qr) {
+                qr.classList.remove('show-active');
+            }
+        });
+    </style>
 
 </body>
 </html>
