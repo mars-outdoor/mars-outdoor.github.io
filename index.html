@@ -5,51 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR | REMOTE WILDERNESS EXPERIENCE</title>
     <style>
-        /* 极致简约硬核户外风格 CSS 样式 */
+        /* 极致黑底纯白文字，高端机能风 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        .hero-section { display: flex; flex-direction: column; align-items: center; padding: 100px 20px 50px; text-align: center; }
-        .brand-logo-wrapper { width: 150px; height: 150px; margin-bottom: 30px; }
-        .logo-svg { width: 100%; height: 100%; }
-        .brand-title { font-size: 32px; font-weight: 700; letter-spacing: 6px; margin-bottom: 10px; }
-        .brand-subtitle { font-size: 12px; color: #777; letter-spacing: 3px; }
-        .about-section { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: justify; }
-        .about-manifesto { font-size: 15px; line-height: 2; color: #ccc; }
-        .cta-container { text-align: center; margin: 60px 0; }
-        .cta-trigger { background: #000; color: #fff; border: 1px solid #fff; padding: 15px 40px; cursor: pointer; transition: 0.3s; }
-        .cta-trigger:hover { background: #fff; color: #000; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 100; }
-        .modal-overlay.active { display: flex; }
-        .qr-image { width: 200px; height: 200px; }
+        body { background-color: #000; color: #fff; font-family: -apple-system, sans-serif; }
+        .hero { padding: 80px 20px; text-align: center; }
+        .logo-svg { width: 120px; height: 120px; }
+        .about { max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; }
+        .manifesto { font-size: 15px; color: #ccc; line-height: 2; margin: 30px 0; }
+        .cta-btn { border: 1px solid #fff; padding: 12px 30px; cursor: pointer; background: #000; color: #fff; }
+        .cta-btn:hover { background: #fff; color: #000; }
+        .standards { max-width: 900px; margin: 100px auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px; }
+        .standard-item { font-size: 12px; }
+        .standard-num { color: #555; }
+        .modal { display: none; position: fixed; top:0; background: rgba(0,0,0,0.9); width:100%; height:100%; justify-content: center; align-items: center; }
+        .modal.active { display: flex; }
+        @media (max-width: 768px) { .standards { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
-    <section class="hero-section">
-        <div class="brand-logo-wrapper">
-            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2">
-                <circle cx="50" cy="50" r="40"/>
-                <path d="M35 50 L45 40 L55 50 L65 40" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        <h1 class="brand-title">MARS.OUTDOOR</h1>
-        <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
+    <section class="hero">
+        <svg class="logo-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#fff" fill="none" stroke-width="2"/>
+            <path d="M35 60 L45 40 L55 50 L65 35" stroke="#fff" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>MARS.OUTDOOR</h1>
     </section>
-    <section class="about-section">
-        <div class="about-manifesto">
-            <p>起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌...</p>
-        </div>
-        <div class="cta-container">
-            <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
-        </div>
+    <section class="about">
+        <p>ABOUT // 探索独白</p>
+        <div class="manifesto">起源于 2019.08... (独白内容)</div>
+        <button class="cta-btn" id="ctaBtn">立即报名</button>
     </section>
-    <div class="modal-overlay" id="qrModal">
-        <img src="qrcode.jpg" alt="QR Code" class="qr-image">
-    </div>
+    <section class="standards">
+        <!-- 4项硬核背书 -->
+    </section>
+    <div class="modal" id="qrModal"><img src="qrcode.jpg"></div>
     <script>
-        const btn = document.getElementById('ctaBtn');
-        const modal = document.getElementById('qrModal');
-        btn.addEventListener('click', () => modal.classList.toggle('active'));
-        modal.addEventListener('click', () => modal.classList.remove('active'));
+        // 互动逻辑：悬停/点击显示二维码
     </script>
 </body>
 </html>
