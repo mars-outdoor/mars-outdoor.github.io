@@ -1,1 +1,40 @@
-火星户外探索频道 | MARS.OUTDOOR* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }body { background-color: #000000; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }.hero-section { width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 110px 24px 40px 24px; text-align: center; }.brand-title-cn { font-size: 26px; font-weight: 700; letter-spacing: 7px; color: #ffffff; margin-bottom: 12px; }.brand-title-en { font-size: 32px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; line-height: 1.1; }.brand-subtitle { font-size: 11px; font-weight: 400; letter-spacing: 4px; color: #777777; margin-top: 18px; text-transform: uppercase; }.about-section { width: 100%; max-width: 800px; margin: 0 auto; padding: 30px 24px 20px 24px; }.about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 32px; display: block; text-align: center; }.about-manifesto { font-size: 15px; font-weight: 300; line-height: 2.3; color: #cccccc; letter-spacing: 1.5px; text-align: justify; text-justify: inter-character; }.manifesto-paragraph { margin-bottom: 24px; }.cta-container { width: 100%; display: flex; justify-content: center; margin: 80px 0 110px 0; }.cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 44px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10; }.cta-trigger:hover { background-color: #ffffff; color: #000000; }.standards-section { width: 100%; max-width: 1100px; margin: 40px auto 120px auto; padding: 0 24px; }.standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }.standard-item { display: flex; flex-direction: column; }.standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }.standard-title-text { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; color: #ffffff; }.standard-desc { font-size: 12px; color: #888888; line-height: 1.8; text-align: justify; }.footer-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 24px 40px 24px; border-top: 1px solid #111111; }.footer-text { font-size: 11px; color: #444444; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px; }.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }.modal-overlay.active { opacity: 1; pointer-events: auto; }.qr-image { width: 200px; height: 200px; margin-bottom: 24px; }.qr-caption { font-size: 13px; font-weight: 300; letter-spacing: 2px; color: #888888; }@media (max-width: 768px) {.hero-section { padding: 90px 20px 40px 20px; }.brand-title-cn { font-size: 22px; letter-spacing: 5px; }.brand-title-en { font-size: 26px; letter-spacing: 4px; }.about-section { padding-top: 20px; }.about-manifesto { font-size: 14px; line-height: 2.1; }.cta-container { margin: 60px 0 60px 0; }.standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }}© 2026 MARS.OUTDOOR EXPLORATION CHANNEL. ALL RIGHTS RESERVED.DISCLAIMER // 户外运动具有天然不可抗力风险。本频道所有活动路线均由专业安全团队实行闭环风险管控，并强制托保高额专业户外探险险种。未经官方授权，严禁对频道发布的独家路书、影像进行二次商业倒卖或采集。微信扫码 · 获取官方路书const ctaBtn = document.getElementById('ctaBtn');const qrModal = document.getElementById('qrModal');const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);if (!isMobile) {ctaBtn.addEventListener('mouseenter', () => qrModal.classList.add('active'));ctaBtn.addEventListener('mouseleave', () => qrModal.classList.remove('active'));} else {ctaBtn.addEventListener('click', (e) => {e.stopPropagation();qrModal.classList.add('active');});qrModal.addEventListener('click', () => qrModal.classList.remove('active'));}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火星户外探索频道 | MARS.OUTDOOR</title>
+    <style>
+        /* [已精简] 包含品牌头部、独白、CTA按钮、硬核安全及免责声明的黑白风格HTML/CSS */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000; color: #fff; font-family: sans-serif; }
+        .hero-section { text-align: center; padding: 100px 20px; }
+        .brand-title-cn { font-size: 24px; letter-spacing: 5px; margin-bottom: 10px; }
+        .brand-title-en { font-size: 28px; letter-spacing: 3px; text-transform: uppercase; }
+        .about-section { max-width: 800px; margin: 0 auto; padding: 20px; text-align: justify; color: #ccc; }
+        .cta-container { text-align: center; margin: 50px 0; }
+        .cta-trigger { background: #fff; color: #000; padding: 10px 30px; border: none; cursor: pointer; }
+        .standards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .standard-item { border: 1px solid #333; padding: 15px; }
+        .footer-section { text-align: center; padding: 40px 20px; font-size: 12px; color: #666; }
+        @media (min-width: 768px) { .standards-grid { grid-template-columns: repeat(4, 1fr); } }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <h1 class="brand-title-cn">火星户外探索频道</h1>
+        <h2 class="brand-title-en">MARS.OUTDOOR</h2>
+    </section>
+    <section class="about-section">
+        <p>MARS.OUTDOOR 独立硬核户外厂牌。专注于无人之境的极致纯粹体验。</p>
+        <div class="cta-container"><button class="cta-trigger">立即报名</button></div>
+    </section>
+    <section class="standards-grid">
+        <div class="standard-item">01 中登协领队</div>
+        <div class="standard-item">02 WFA荒野医疗</div>
+        <div class="standard-item">03 卫星通信</div>
+        <div class="standard-item">04 极致纯粹</div>
+    </section>
+    <footer class="footer-section">© 2026 MARS.OUTDOOR. ALL RIGHTS RESERVED.</footer>
+</body>
+</html>
