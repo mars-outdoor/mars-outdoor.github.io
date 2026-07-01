@@ -5,226 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR | REMOTE WILDERNESS EXPERIENCE</title>
     <style>
-        /* 全局大牌克制风样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background-color: #000000; color: #ffffff; font-family: -apple-system, sans-serif; overflow-x: hidden; }
+        
+        /* 第一屏：品牌核心区 */
+        .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 24px; text-align: center; }
+        .brand-logo-wrapper { width: 160px; height: 160px; margin-bottom: 24px; }
+        .logo-svg { width: 100%; height: 100%; }
+        .brand-title { font-size: 32px; font-weight: 700; letter-spacing: 6px; margin-bottom: 14px; text-transform: uppercase; }
+        .brand-subtitle { font-size: 11px; font-weight: 400; letter-spacing: 4px; color: #777777; text-transform: uppercase; }
+        
+        /* 交互按钮 */
+        .cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 36px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; margin-top: 48px; }
+        .cta-trigger:hover { background-color: #ffffff; color: #000000; }
 
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 80px 24px 60px 24px;
-            overflow-x: hidden;
-        }
+        /* 第二屏：震撼战绩大图 */
+        .showcase-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .showcase-box { width: 100%; height: 450px; background-color: #111111; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 32px; }
+        .showcase-img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter: grayscale(100%) brightness(50%); }
+        .showcase-text { position: relative; z-index: 2; border-left: 2px solid #ffffff; padding-left: 16px; }
+        .showcase-tag { font-size: 11px; font-family: monospace; color: #777777; letter-spacing: 2px; }
+        .showcase-title { font-size: 20px; font-weight: 500; letter-spacing: 2px; margin-top: 4px; }
 
-        /* 核心品牌标识区 */
-        .brand-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
+        /* 第三屏：四项硬核背书 */
+        .standards-section { width: 100%; max-width: 1100px; margin: 80px auto; padding: 0 24px; }
+        .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
+        .standard-item { display: flex; flex-direction: column; }
+        .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
+        .standard-title-text { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; color: #ffffff; }
+        .standard-desc { font-size: 12px; color: #888888; line-height: 1.8; text-align: justify; }
 
-        /* 1:1 完美圆润图标比例控制 */
-        .brand-logo-wrapper {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 28px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        /* 页脚法律声明 */
+        .footer-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 24px 40px 24px; border-top: 1px solid #111111; }
+        .footer-text { font-size: 11px; color: #444444; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px; }
 
-        .logo-svg {
-            width: 100%;
-            height: 100%;
-        }
+        /* 隐藏二维码弹窗 */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .qr-image { width: 200px; height: 200px; margin-bottom: 24px; filter: grayscale(100%); }
+        .qr-caption { font-size: 13px; font-weight: 300; letter-spacing: 2px; color: #888888; }
 
-        .brand-title {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 5px;
-            line-height: 1;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-        }
-
-        .brand-subtitle {
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            color: #777777;
-            text-transform: uppercase;
-        }
-
-        /* 核心交互按钮 */
-        .cta-trigger {
-            background: none;
-            border: 1px solid #ffffff;
-            color: #ffffff;
-            padding: 14px 36px;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-top: 48px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* 4项硬核安全标准 */
-        .standards-grid {
-            width: 100%;
-            max-width: 960px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-top: auto;
-            border-top: 1px solid #222222;
-            padding-top: 40px;
-        }
-
-        .standard-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .standard-num {
-            font-size: 12px;
-            font-family: monospace;
-            color: #444444;
-            margin-bottom: 8px;
-        }
-
-        .standard-text {
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            color: #cccccc;
-            line-height: 1.6;
-        }
-
-        /* 弹窗组件 */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .qr-image {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 24px;
-            filter: grayscale(100%);
-        }
-
-        .qr-caption {
-            font-size: 13px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: #888888;
-        }
-
-        /* 移动端响应式适配 */
+        /* 移动端响应式 */
         @media (max-width: 768px) {
-            body {
-                padding: 60px 20px 40px 20px;
-            }
-            .brand-logo-wrapper {
-                width: 140px;
-                height: 140px;
-                margin-bottom: 24px;
-            }
-            .brand-title {
-                font-size: 26px;
-                letter-spacing: 4px;
-            }
-            .standards-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-                padding-top: 30px;
-            }
+            .hero-section { min-height: 85vh; }
+            .brand-title { font-size: 26px; letter-spacing: 4px; }
+            .showcase-box { height: 300px; padding: 20px; }
+            .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 核心品牌标识区 -->
-    <div class="brand-container">
-        <!-- 终极重构：带机能圆角平滑过渡的完美 1:1 商标 -->
+    <!-- 第一屏：品牌核心区 -->
+    <section class="hero-section">
         <div class="brand-logo-wrapper">
             <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                <!-- 外部完美正圆圈 -->
                 <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="2.5"/>
-                
-                <!-- 后方深灰色交错折线（全面平滑圆角化） -->
                 <path d="M47 55 L55 45 L62 53.5 L67.5 47" stroke="#444444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                
-                <!-- 前方纯白色破圈主折线（全面平滑圆角化） -->
                 <path d="M32.5 58.5 L44.5 40 L53.5 50.5 L67.5 32.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                
-                <!-- 顶端指向右上方的凌厉尖锐箭头（完美融入圆角连接） -->
                 <path d="M57.5 32.5 H67.5 V42.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
-        
         <h1 class="brand-title">MARS.OUTDOOR</h1>
         <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
-        
-        <!-- 核心交互组件 -->
         <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
-    </div>
+    </section>
 
-    <!-- 4项硬核安全标准 -->
-    <div class="standards-grid">
-        <div class="standard-item">
-            <span class="standard-num">01 //</span>
-            <span class="standard-text">中登协领队</span>
+    <!-- 第二屏：战绩定格大图 -->
+    <section class="showcase-section">
+        <div class="showcase-box">
+            <!-- 站长可将 nanshan.jpg 替换为您的高清摄影作品，无图则自动保持极简黑背景 -->
+            <img src="nanshan.jpg" alt="" class="showcase-img" onerror="this.style.display='none'">
+            <div class="showcase-text">
+                <span class="showcase-tag">ROUTE // 01</span>
+                <h2 class="showcase-title">南山十二峰 · 荒野全穿透</h2>
+            </div>
         </div>
-        <div class="standard-item">
-            <span class="standard-num">02 //</span>
-            <span class="standard-text">WFA荒野医疗</span>
-        </div>
-        <div class="standard-item">
-            <span class="standard-num">03 //</span>
-            <span class="standard-text">卫星通信</span>
-        </div>
-        <div class="standard-item">
-            <span class="standard-num">04 //</span>
-            <span class="standard-text">极致纯粹体验</span>
-        </div>
-    </div>
+    </section>
 
-    <!-- 隐蔽弹窗层 -->
+    <!-- 第三屏：四项硬核安全背书 -->
+    <section class="standards-section">
+        <div class="standards-grid">
+            <div class="standard-item">
+                <div class="standard-num">01 // TEAM</div>
+                <h3 class="standard-title-text">中登协领队</h3>
+                <p class="standard-desc">全线向导均持中国登山协会认证资质执导，具备极强自然预判与复杂地形通过能力。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">02 // MEDICAL</div>
+                <h3 class="standard-title-text">WFA荒野医疗</h3>
+                <p class="standard-desc">核心领队100%通过国际荒野第一响应者高级医疗认证，严格死守无人区现场应急红线。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">03 // COMMS</div>
+                <h3 class="standard-title-text">卫星通信</h3>
+                <p class="standard-desc">全队标配高精度卫星通信终端与全天候GPS定位，全时段与海内外地面紧急救援中心保持联动。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">04 // PURITY</div>
+                <h3 class="standard-title-text">极致纯粹体验</h3>
+                <p class="standard-desc">100%自主独立研发硬核探险路线。拒绝一切商业化购物污染，回归神圣自然的生态纯粹。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部官方声明页脚 -->
+    <footer class="footer-section">
+        <p class="footer-text">© 2026 MARS.OUTDOOR EXPLORATION CHANNEL. ALL RIGHTS RESERVED.</p>
+        <p class="footer-text">DISCLAIMER // 户外运动具有天然不可抗力风险。本频道所有活动路线均由专业安全团队实行闭环风险管控，并强制托保高额专业户外探险险种。未经官方授权，严禁对频道发布的独家路书、影像进行二次商业倒卖或采集。</p>
+    </footer>
+
+    <!-- 弹窗层 -->
     <div class="modal-overlay" id="qrModal">
         <img src="qrcode.jpg" alt="QR Code" class="qr-image">
         <p class="qr-caption">微信扫码 · 获取官方路书</p>
@@ -233,24 +124,17 @@
     <script>
         const ctaBtn = document.getElementById('ctaBtn');
         const qrModal = document.getElementById('qrModal');
-
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         if (!isMobile) {
-            ctaBtn.addEventListener('mouseenter', () => {
-                qrModal.classList.add('active');
-            });
-            ctaBtn.addEventListener('mouseleave', () => {
-                qrModal.classList.remove('active');
-            });
+            ctaBtn.addEventListener('mouseenter', () => qrModal.classList.add('active'));
+            ctaBtn.addEventListener('mouseleave', () => qrModal.classList.remove('active'));
         } else {
             ctaBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 qrModal.classList.add('active');
             });
-            qrModal.addEventListener('click', () => {
-                qrModal.classList.remove('active');
-            });
+            qrModal.addEventListener('click', () => qrModal.classList.remove('active'));
         }
     </script>
 </body>
