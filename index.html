@@ -1,38 +1,136 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>火星户外探索频道 | MARS.OUTDOOR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火星户外探索频道 | MARS.OUTDOOR</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; color: #fff; font-family: sans-serif; }
-        .hero { text-align: center; padding: 100px 20px; }
-        .title-cn { font-size: 24px; letter-spacing: 5px; }
-        .title-en { font-size: 28px; font-weight: bold; }
-        .content { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #ccc; }
-        .standards { max-width: 1000px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .item { border: 1px solid #333; padding: 15px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; flex-direction: column; }
-        .modal.active { display: flex; }
+        /* 全局大牌克制风：纯黑背景，抗锯齿 */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background-color: #000000; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+        
+        /* 头部品牌区：中文在上，英文在下 */
+        .hero-section { width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 110px 24px 40px 24px; text-align: center; }
+        .brand-title-cn { font-size: 26px; font-weight: 700; letter-spacing: 7px; color: #ffffff; margin-bottom: 12px; }
+        .brand-title-en { font-size: 32px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; line-height: 1.1; }
+        .brand-subtitle { font-size: 11px; font-weight: 400; letter-spacing: 4px; color: #777777; margin-top: 18px; text-transform: uppercase; }
+        
+        /* 探索独白模块 */
+        .about-section { width: 100%; max-width: 800px; margin: 0 auto; padding: 30px 24px 20px 24px; }
+        .about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 32px; display: block; text-align: center; }
+        .about-manifesto { font-size: 15px; font-weight: 300; line-height: 2.3; color: #cccccc; letter-spacing: 1.5px; text-align: justify; }
+        .manifesto-paragraph { margin-bottom: 24px; }
+
+        /* 核心交互按钮 */
+        .cta-container { width: 100%; display: flex; justify-content: center; margin: 80px 0 110px 0; }
+        .cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 44px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10; }
+        .cta-trigger:hover { background-color: #ffffff; color: #000000; }
+
+        /* 四项硬核安全背书 */
+        .standards-section { width: 100%; max-width: 1100px; margin: 40px auto 120px auto; padding: 0 24px; }
+        .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
+        .standard-item { display: flex; flex-direction: column; }
+        .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
+        .standard-title-text { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; color: #ffffff; }
+        .standard-desc { font-size: 12px; color: #888888; line-height: 1.8; text-align: justify; }
+
+        /* 页脚官方声明 */
+        .footer-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 24px 40px 24px; border-top: 1px solid #111111; }
+        .footer-text { font-size: 11px; color: #444444; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px; }
+
+        /* 隐藏二维码弹窗 */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .qr-image { width: 200px; height: 200px; margin-bottom: 24px; }
+        .qr-caption { font-size: 13px; font-weight: 300; letter-spacing: 2px; color: #888888; }
+
+        /* 移动端响应式 */
+        @media (max-width: 768px) {
+            .hero-section { padding: 90px 20px 40px 20px; }
+            .brand-title-cn { font-size: 22px; letter-spacing: 5px; }
+            .brand-title-en { font-size: 26px; letter-spacing: 4px; }
+            .about-section { padding-top: 20px; }
+            .about-manifesto { font-size: 14px; line-height: 2.1; }
+            .cta-container { margin: 60px 0 60px 0; }
+            .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        }
     </style>
 </head>
 <body>
-    <section class="hero"><h1>火星户外探索频道</h1><p>MARS.OUTDOOR</p></section>
-    <section class="content">
-        <p>火星户外探索频道（MARS.OUTDOOR）专注硬核户外。我们坚持纯粹体验，不仅有中登协领队、WFA荒野医疗资质，还提供卫星通信保障，打造极致探险。</p>
-        <button id="ctaBtn" style="margin-top:20px; padding:10px 20px;">获取路书</button>
+
+    <!-- 品牌主视觉区 -->
+    <section class="hero-section">
+        <h1 class="brand-title-cn">火星户外探索频道</h1>
+        <h2 class="brand-title-en">MARS.OUTDOOR</h2>
+        <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
     </section>
-    <section class="standards">
-        <div class="item"><h3>01.中登协领队</h3></div>
-        <div class="item"><h3>02.WFA医疗</h3></div>
-        <div class="item"><h3>03.卫星通信</h3></div>
-        <div class="item"><h3>04.独立路线</h3></div>
+
+    <!-- 探索独白模块 -->
+    <section class="about-section">
+        <span class="about-tag">ABOUT // 探索独白</span>
+        <div class="about-manifesto">
+            <p class="manifesto-paragraph">起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌，是一场关于地理边界与个体意志的闭环对冲。</p>
+            <p class="manifesto-paragraph">步入极致纯粹，卸下文明的伪饰，去旷野，寻找你的火星。火星不是远方的庇护所，而是深埋于你体内的那座不妥协、不跟风、冷峻且独立的精神坐标。在没有中间地带的无人之境，直面风雪、重力与自然演变。每一次刺穿地表边界的跋涉，都是在熵增的世界里，对个体意志的极限淬炼。</p>
+            <p class="manifesto-paragraph">我们为少数行者而生。以绝对理性的技术闭环锁死未知，只为在宇宙最深沉的孤独中，为你锚定那一处极致纯粹的信任防线。</p>
+        </div>
+        <div class="cta-container">
+            <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
+        </div>
     </section>
-    <div class="modal" id="qrModal"><p>扫码获取路书</p></div>
+
+    <!-- 四项硬核安全背书 -->
+    <section class="standards-section">
+        <div class="standards-grid">
+            <div class="standard-item">
+                <div class="standard-num">01 // TEAM</div>
+                <h3 class="standard-title-text">中登协领队</h3>
+                <p class="standard-desc">全线向导均持中国登山协会认证资质执导，具备极强自然预判与复杂地形通过能力。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">02 // MEDICAL</div>
+                <h3 class="standard-title-text">WFA荒野医疗</h3>
+                <p class="standard-desc">核心领队100%通过国际荒野第一响应者高级医疗认证，严格死守无人区现场应急红线。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">03 // COMMS</div>
+                <h3 class="standard-title-text">卫星通信</h3>
+                <p class="standard-desc">全队标配高精度卫星通信终端与全天候GPS定位，全时段与海内外地面紧急救援中心保持联动。</p>
+            </div>
+            <div class="standard-item">
+                <div class="standard-num">04 // PURITY</div>
+                <h3 class="standard-title-text">极致纯粹体验</h3>
+                <p class="standard-desc">100%自主独立研发硬核探险路线。拒绝一切商业化购物污染，回归神圣自然的生态纯粹。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部官方免责与版权页脚 -->
+    <footer class="footer-section">
+        <p class="footer-text">© 2026 MARS.OUTDOOR EXPLORATION CHANNEL. ALL RIGHTS RESERVED.</p>
+        <p class="footer-text">DISCLAIMER // 户外运动具有天然不可抗力风险。本频道所有活动路线均由专业安全团队实行闭环风险管控，并强制托保高额专业户外探险险种。未经官方授权，严禁对频道发布的独家路书、影像进行二次商业倒卖或采集。</p>
+    </footer>
+
+    <!-- 二维码交互层 -->
+    <div class="modal-overlay" id="qrModal">
+        <img src="qrcode.jpg" alt="QR Code" class="qr-image">
+        <p class="qr-caption">微信扫码 · 获取官方路书</p>
+    </div>
+
     <script>
         const ctaBtn = document.getElementById('ctaBtn');
         const qrModal = document.getElementById('qrModal');
-        ctaBtn.addEventListener('click', () => qrModal.classList.add('active'));
-        qrModal.addEventListener('click', () => qrModal.classList.remove('active'));
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (!isMobile) {
+            ctaBtn.addEventListener('mouseenter', () => qrModal.classList.add('active'));
+            ctaBtn.addEventListener('mouseleave', () => qrModal.classList.remove('active'));
+        } else {
+            ctaBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                qrModal.classList.add('active');
+            });
+            qrModal.addEventListener('click', () => qrModal.classList.remove('active'));
+        }
     </script>
 </body>
 </html>
