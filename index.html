@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>火星户外探索频道 | MARS.OUTDOOR</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>火星户外探索频道 | MARS.OUTDOOR</title>
     <style>
-        /* 极致黑底，机能风格排版 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; color: #fff; font-family: -apple-system, sans-serif; }
-        .hero-section { text-align: center; padding: 100px 20px; }
-        .brand-title-cn { font-size: 24px; letter-spacing: 6px; }
-        .brand-title-en { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
-        .about-section { max-width: 700px; margin: 0 auto; padding: 20px; text-align: justify; }
-        .about-manifesto { color: #ccc; line-height: 1.8; font-size: 14px; }
-        .cta-container { text-align: center; margin: 50px 0; }
-        .cta-trigger { border: 1px solid #fff; background: none; color: #fff; padding: 12px 30px; cursor: pointer; }
-        .standards-section { max-width: 900px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .standard-item { border-top: 1px solid #333; padding-top: 20px; }
-        .standard-title-text { font-size: 16px; margin-bottom: 5px; }
-        .standard-desc { font-size: 12px; color: #888; }
-        .footer-section { text-align: center; padding: 40px 20px; font-size: 10px; color: #555; }
-        @media (max-width: 768px) { .standards-section { grid-template-columns: 1fr; } }
+        body { background-color: #000; color: #fff; font-family: sans-serif; }
+        .hero { text-align: center; padding: 100px 20px; }
+        .title-cn { font-size: 24px; letter-spacing: 5px; }
+        .title-en { font-size: 28px; font-weight: bold; }
+        .content { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #ccc; }
+        .standards { max-width: 1000px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .item { border: 1px solid #333; padding: 15px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; flex-direction: column; }
+        .modal.active { display: flex; }
     </style>
 </head>
 <body>
-    <section class="hero-section">
-        <h1 class="brand-title-cn">火星户外探索频道</h1>
-        <h2 class="brand-title-en">MARS.OUTDOOR</h2>
+    <section class="hero"><h1>火星户外探索频道</h1><p>MARS.OUTDOOR</p></section>
+    <section class="content">
+        <p>火星户外探索频道（MARS.OUTDOOR）专注硬核户外。我们坚持纯粹体验，不仅有中登协领队、WFA荒野医疗资质，还提供卫星通信保障，打造极致探险。</p>
+        <button id="ctaBtn" style="margin-top:20px; padding:10px 20px;">获取路书</button>
     </section>
-    <section class="about-section">
-        <div class="about-manifesto">
-            <p>起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌...（此处包含完整200字独白）</p>
-        </div>
-        <div class="cta-container"><button class="cta-trigger">立即报名 / 获取路书 ⚡</button></div>
+    <section class="standards">
+        <div class="item"><h3>01.中登协领队</h3></div>
+        <div class="item"><h3>02.WFA医疗</h3></div>
+        <div class="item"><h3>03.卫星通信</h3></div>
+        <div class="item"><h3>04.独立路线</h3></div>
     </section>
-    <section class="standards-section">
-        <div class="standard-item"><h3>01 // 中登协领队</h3><p class="standard-desc">持有专业认证...</p></div>
-        <div class="standard-item"><h3>02 // WFA荒野医疗</h3><p class="standard-desc">高级医疗认证...</p></div>
-        <div class="standard-item"><h3>03 // 卫星通信</h3><p class="standard-desc">实时联动...</p></div>
-        <div class="standard-item"><h3>04 // 极致纯粹体验</h3><p class="standard-desc">自主研发路线...</p></div>
-    </section>
-    <footer class="footer-section"><p>© 2026 MARS.OUTDOOR. ALL RIGHTS RESERVED.</p></footer>
+    <div class="modal" id="qrModal"><p>扫码获取路书</p></div>
+    <script>
+        const ctaBtn = document.getElementById('ctaBtn');
+        const qrModal = document.getElementById('qrModal');
+        ctaBtn.addEventListener('click', () => qrModal.classList.add('active'));
+        qrModal.addEventListener('click', () => qrModal.classList.remove('active'));
+    </script>
 </body>
 </html>
