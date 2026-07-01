@@ -19,6 +19,11 @@
         .cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 36px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; margin-top: 48px; }
         .cta-trigger:hover { background-color: #ffffff; color: #000000; }
 
+        /* 新增：关于频道介绍模块（硬核大牌宣言风） */
+        .about-section { width: 100%; max-width: 800px; margin: 0 auto 100px auto; padding: 0 24px; text-align: center; }
+        .about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 24px; display: block; }
+        .about-manifesto { font-size: 16px; font-weight: 300; line-height: 2.2; color: #cccccc; letter-spacing: 1.5px; text-align: justify; text-justify: inter-character; }
+
         /* 第二屏：震撼战绩大图 */
         .showcase-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         .showcase-box { width: 100%; height: 450px; background-color: #111111; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 32px; }
@@ -27,8 +32,8 @@
         .showcase-tag { font-size: 11px; font-family: monospace; color: #777777; letter-spacing: 2px; }
         .showcase-title { font-size: 20px; font-weight: 500; letter-spacing: 2px; margin-top: 4px; }
 
-        /* 第三屏：四项硬核背书 */
-        .standards-section { width: 100%; max-width: 1100px; margin: 80px auto; padding: 0 24px; }
+        /* 第三屏：四项硬核安全背书 */
+        .standards-section { width: 100%; max-width: 1100px; margin: 100px auto; padding: 0 24px; }
         .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
         .standard-item { display: flex; flex-direction: column; }
         .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
@@ -49,6 +54,7 @@
         @media (max-width: 768px) {
             .hero-section { min-height: 85vh; }
             .brand-title { font-size: 26px; letter-spacing: 4px; }
+            .about-manifesto { font-size: 14px; line-height: 2; text-align: justify; }
             .showcase-box { height: 300px; padding: 20px; }
             .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
@@ -71,10 +77,17 @@
         <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
     </section>
 
+    <!-- 新增：关于频道介绍模块 -->
+    <section class="about-section">
+        <span class="about-tag">ABOUT // 探索独白</span>
+        <p class="about-manifesto">
+            火星户外探索频道（MARS.OUTDOOR）是一个专注于极致机能美学与荒野穿透的硬核户外厂牌。我们相信，探索未知的荒野不仅是一场对地理边界的突破，更是一次对个体意志的极限淬炼。频道拒绝流于表面的商业化跟风，坚持以中登协专业向导资质与全线卫星应急通信为安全红线，独立研发并闭环管理每一条深入地表无人之境的极致路线。在这里，我们用最克制的视觉语言记录真实的自然不可抗力，为所有渴望回归神圣自然、追求纯粹探索体验的荒野行者建立绝对专业的信任立足点。
+        </p>
+    </section>
+
     <!-- 第二屏：战绩定格大图 -->
     <section class="showcase-section">
         <div class="showcase-box">
-            <!-- 站长可将 nanshan.jpg 替换为您的高清摄影作品，无图则自动保持极简黑背景 -->
             <img src="nanshan.jpg" alt="" class="showcase-img" onerror="this.style.display='none'">
             <div class="showcase-text">
                 <span class="showcase-tag">ROUTE // 01</span>
