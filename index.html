@@ -15,26 +15,19 @@
         .brand-title { font-size: 32px; font-weight: 700; letter-spacing: 6px; margin-bottom: 14px; text-transform: uppercase; }
         .brand-subtitle { font-size: 11px; font-weight: 400; letter-spacing: 4px; color: #777777; text-transform: uppercase; }
         
-        /* 核心交互按钮 */
-        .cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 36px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; margin-top: 48px; }
-        .cta-trigger:hover { background-color: #ffffff; color: #000000; }
-
         /* 探索独白宣言模块（极致大牌留白） */
-        .about-section { width: 100%; max-width: 800px; margin: 0 auto 120px auto; padding: 0 24px; }
+        .about-section { width: 100%; max-width: 800px; margin: 0 auto; padding: 120px 24px 40px 24px; }
         .about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 32px; display: block; text-align: center; }
         .about-manifesto { font-size: 15px; font-weight: 300; line-height: 2.3; color: #cccccc; letter-spacing: 1.5px; text-align: justify; text-justify: inter-character; }
         .manifesto-paragraph { margin-bottom: 24px; }
 
-        /* 第二屏：战绩定格大图 */
-        .showcase-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .showcase-box { width: 100%; height: 450px; background-color: #111111; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 32px; }
-        .showcase-img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter: grayscale(100%) brightness(50%); }
-        .showcase-text { position: relative; z-index: 2; border-left: 2px solid #ffffff; padding-left: 16px; }
-        .showcase-tag { font-size: 11px; font-family: monospace; color: #777777; letter-spacing: 2px; }
-        .showcase-title { font-size: 20px; font-weight: 500; letter-spacing: 2px; margin-top: 4px; }
+        /* 核心交互按钮：移至独白下方，占据视觉核心区 */
+        .cta-container { width: 100%; display: flex; justify-content: center; margin: 56px 0 80px 0; }
+        .cta-trigger { background: none; border: 1px solid #ffffff; color: #ffffff; padding: 14px 40px; font-size: 14px; font-weight: 500; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10; }
+        .cta-trigger:hover { background-color: #ffffff; color: #000000; }
 
         /* 第三屏：四项硬核安全背书 */
-        .standards-section { width: 100%; max-width: 1100px; margin: 120px auto; padding: 0 24px; }
+        .standards-section { width: 100%; max-width: 1100px; margin: 40px auto 120px auto; padding: 0 24px; }
         .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
         .standard-item { display: flex; flex-direction: column; }
         .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
@@ -53,11 +46,11 @@
 
         /* 移动端响应式 */
         @media (max-width: 768px) {
-            .hero-section { min-height: 85vh; }
+            .hero-section { min-height: 90vh; }
             .brand-title { font-size: 26px; letter-spacing: 4px; }
-            .about-section { margin-bottom: 80px; }
+            .about-section { padding-top: 80px; }
             .about-manifesto { font-size: 14px; line-height: 2.1; }
-            .showcase-box { height: 300px; padding: 20px; }
+            .cta-container { margin: 40px 0 60px 0; }
             .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
     </style>
@@ -76,10 +69,9 @@
         </div>
         <h1 class="brand-title">MARS.OUTDOOR</h1>
         <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
-        <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
     </section>
 
-    <!-- 终极文案融合版：探索独白模块 -->
+    <!-- 探索独白模块 -->
     <section class="about-section">
         <span class="about-tag">ABOUT // 探索独白</span>
         <div class="about-manifesto">
@@ -87,16 +79,10 @@
             <p class="manifesto-paragraph">步入极致纯粹，卸下文明的伪饰，去旷野，寻找你的火星。火星不是远方的庇护所，而是深埋于你体内的那座不妥协、不跟风、冷峻且独立的精神坐标。在没有中间地带的无人之境，直面风雪、重力与自然演变。每一次刺穿地表边界的跋涉，都是在熵增的世界里，对个体意志的极限淬炼。</p>
             <p class="manifesto-paragraph">我们为少数行者而生。以绝对理性的技术闭环锁死未知，只为在宇宙最深沉的孤独中，为你锚定那一处极致纯粹的信任防线。</p>
         </div>
-    </section>
 
-    <!-- 第二屏：战绩定格大图 -->
-    <section class="showcase-section">
-        <div class="showcase-box">
-            <img src="nanshan.jpg" alt="" class="showcase-img" onerror="this.style.display='none'">
-            <div class="showcase-text">
-                <span class="showcase-tag">ROUTE // 01</span>
-                <h2 class="showcase-title">南山十二峰 · 荒野全穿透</h2>
-            </div>
+        <!-- 按钮置换：精准降落在独白模块下方 -->
+        <div class="cta-container">
+            <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
         </div>
     </section>
 
