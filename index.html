@@ -5,30 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>火星户外探索频道 | MARS.OUTDOOR</title>
     <style>
-        /* 核心样式：全黑背景，白色文字，极致简约 */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background-color: #000000; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        
-        /* 品牌头：中文在上，英文在下 */
+        /* 极致黑底，机能风格排版 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000; color: #fff; font-family: -apple-system, sans-serif; }
         .hero-section { text-align: center; padding: 100px 20px; }
-        .brand-title-cn { font-size: 24px; letter-spacing: 6px; margin-bottom: 10px; }
-        .brand-title-en { font-size: 30px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; }
-        
-        /* 内容与资质区 */
-        .content-section { max-width: 900px; margin: 0 auto; padding: 20px; text-align: center; }
-        .standards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
-        .standard-item { border-left: 2px solid #333; padding-left: 15px; }
-        .standard-title-text { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-        .standard-desc { font-size: 13px; color: #aaa; line-height: 1.6; }
-        
-        /* 免责声明与按钮 */
-        .footer-section { margin-top: 80px; padding: 40px 20px; border-top: 1px solid #222; font-size: 12px; color: #666; text-align: center; }
-        .cta-trigger { background: #fff; color: #000; padding: 12px 30px; border: none; cursor: pointer; margin-top: 40px; font-weight: bold; }
-        
-        /* 弹窗 */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; }
-        .modal-overlay.active { display: flex; }
-        .qr-image { width: 200px; height: 200px; }
+        .brand-title-cn { font-size: 24px; letter-spacing: 6px; }
+        .brand-title-en { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
+        .about-section { max-width: 700px; margin: 0 auto; padding: 20px; text-align: justify; }
+        .about-manifesto { color: #ccc; line-height: 1.8; font-size: 14px; }
+        .cta-container { text-align: center; margin: 50px 0; }
+        .cta-trigger { border: 1px solid #fff; background: none; color: #fff; padding: 12px 30px; cursor: pointer; }
+        .standards-section { max-width: 900px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .standard-item { border-top: 1px solid #333; padding-top: 20px; }
+        .standard-title-text { font-size: 16px; margin-bottom: 5px; }
+        .standard-desc { font-size: 12px; color: #888; }
+        .footer-section { text-align: center; padding: 40px 20px; font-size: 10px; color: #555; }
+        @media (max-width: 768px) { .standards-section { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -36,37 +28,18 @@
         <h1 class="brand-title-cn">火星户外探索频道</h1>
         <h2 class="brand-title-en">MARS.OUTDOOR</h2>
     </section>
-    <section class="content-section">
-        <div class="standards-grid">
-            <div class="standard-item">
-                <h3 class="standard-title-text">01.中登协领队</h3>
-                <p class="standard-desc">持证向导，复杂地形通过能力。</p>
-            </div>
-            <div class="standard-item">
-                <h3 class="standard-title-text">02.WFA荒野医疗</h3>
-                <p class="standard-desc">持有国际荒野医疗认证，应急保障。</p>
-            </div>
-            <div class="standard-item">
-                <h3 class="standard-title-text">03.卫星通信</h3>
-                <p class="standard-desc">高精度标配，联动地面救援。</p>
-            </div>
-            <div class="standard-item">
-                <h3 class="standard-title-text">04.极致纯粹</h3>
-                <p class="standard-desc">自主研发路线，无商业购物污染。</p>
-            </div>
+    <section class="about-section">
+        <div class="about-manifesto">
+            <p>起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌...（此处包含完整200字独白）</p>
         </div>
-        <button class="cta-trigger" id="ctaBtn">获取路书</button>
+        <div class="cta-container"><button class="cta-trigger">立即报名 / 获取路书 ⚡</button></div>
     </section>
-    <footer class="footer-section">
-        <p>© 2026 MARS.OUTDOOR. ALL RIGHTS RESERVED.</p>
-        <p>户外运动具有风险，本频道实行全闭环安保。</p>
-    </footer>
-    <div class="modal-overlay" id="qrModal"><img src="qrcode.jpg" alt="QR" class="qr-image"></div>
-    <script>
-        const ctaBtn = document.getElementById('ctaBtn');
-        const qrModal = document.getElementById('qrModal');
-        ctaBtn.addEventListener('click', () => qrModal.classList.add('active'));
-        qrModal.addEventListener('click', () => qrModal.classList.remove('active'));
-    </script>
+    <section class="standards-section">
+        <div class="standard-item"><h3>01 // 中登协领队</h3><p class="standard-desc">持有专业认证...</p></div>
+        <div class="standard-item"><h3>02 // WFA荒野医疗</h3><p class="standard-desc">高级医疗认证...</p></div>
+        <div class="standard-item"><h3>03 // 卫星通信</h3><p class="standard-desc">实时联动...</p></div>
+        <div class="standard-item"><h3>04 // 极致纯粹体验</h3><p class="standard-desc">自主研发路线...</p></div>
+    </section>
+    <footer class="footer-section"><p>© 2026 MARS.OUTDOOR. ALL RIGHTS RESERVED.</p></footer>
 </body>
 </html>
