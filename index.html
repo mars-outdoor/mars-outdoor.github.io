@@ -36,11 +36,19 @@
             margin-bottom: auto;
         }
 
-        /* 原生复刻的商标图形 */
+        /* 1:1 高精度复刻商标尺寸控制 */
+        .brand-logo-wrapper {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .logo-svg {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 32px;
+            width: 100%;
+            height: 100%;
         }
 
         .brand-title {
@@ -48,7 +56,7 @@
             font-weight: 700;
             letter-spacing: 6px;
             line-height: 1;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             text-transform: uppercase;
         }
 
@@ -108,7 +116,7 @@
             line-height: 1.6;
         }
 
-        /* 弹窗组件：克制大牌风，无多余边框与背景 */
+        /* 弹窗组件：绝对克制，无多余边框 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -146,10 +154,15 @@
             color: #888888;
         }
 
-        /* 移动端适配适配 */
+        /* 移动端响应式适配 */
         @media (max-width: 768px) {
             body {
                 padding: 60px 20px 40px 20px;
+            }
+            .brand-logo-wrapper {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 24px;
             }
             .brand-title {
                 font-size: 26px;
@@ -167,13 +180,19 @@
 
     <!-- 核心品牌标识区 -->
     <div class="brand-container">
-        <!-- 1:1 原生代码复刻的 MARS.OUTDOOR 商标 -->
-        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-            <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="2"/>
-            <path d="M30 65 L45 40 L55 55 L70 30" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M63 30 H70 V37" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M43 62 L52 50 L58 58 L68 44" stroke="#444444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <!-- 完美贴合实物印花的高精度原厂 SVG 图标 -->
+        <div class="brand-logo-wrapper">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
+                <!-- 外部正圆 -->
+                <circle cx="50" cy="50" r="42" stroke="#ffffff" stroke-width="2.5"/>
+                <!-- 后方深色平行阴影折线 -->
+                <path d="M34 66 L47 50 L57 60 L71 39" stroke="#333333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 前方主视觉白色折线 -->
+                <path d="M29 61 L42 45 L52 55 L68 31" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 顶端指向未来的硬核箭头 -->
+                <path d="M57 31 H68 V42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
         
         <h1 class="brand-title">MARS.OUTDOOR</h1>
         <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
@@ -212,11 +231,11 @@
         const ctaBtn = document.getElementById('ctaBtn');
         const qrModal = document.getElementById('qrModal');
 
-        // 检测是否为移动端
+        // 锁定移动端与PC端的动态交互逻辑
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         if (!isMobile) {
-            // PC端：鼠标悬停触发，移开消失
+            // 电脑端：鼠标悬停触发，移开消失
             ctaBtn.addEventListener('mouseenter', () => {
                 qrModal.classList.add('active');
             });
@@ -224,7 +243,7 @@
                 qrModal.classList.remove('active');
             });
         } else {
-            // 手机端：点击（onclick）触发，再次点击任意处关闭
+            // 手机端：点击（onclick）触发，再次点击屏幕任意位置关闭
             ctaBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 qrModal.classList.add('active');
