@@ -1,256 +1,205 @@
-<!-- 
-==========================================================================
-【MARS.OUTDOOR 官方源码极简大牌美学锁死备注 - 严禁 AI 随意重构】
-1. 品牌美学：主标题已由 EXPLORE 改为 MARS.OUTDOOR。删除了所有多余中文标签。
-2. 标志设计：顶部完美锁死您最满意的方案二——“奥林匹斯几何断崖等高线”硬朗纯白矢量Logo。
-3. 全局样式：纯黑底（#000000）、纯白字。走类似始祖鸟、Patagonia 的旷野冷峻极简风。
-4. 核心功能：
-   - 报名按钮（.cta-btn）与二维码盒子（.qr-box）一体化。
-   - 电脑端靠 :hover 悬停平滑浮现；手机端靠绑定的 toggleQRCode(event) 触控点击弹出。
-   - 二维码关联路径必须锁死为：qrcode.jpg（不可错写为 png）。
-   - 二维码下方专属高级文案确定为选项C：“微信扫码 · 获取官方路书”。
-5. 下方板块：原汁原味锁死四项硬核安全（中登协、WFA医疗、卫星、纯粹体验），严禁擅自修改字句或套用方框网格。
-==========================================================================
--->
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARS.OUTDOOR</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+MARS.OUTDOOR  
+  
+/\* 极致克制大牌风基础样式 \*/  
+\* {  
+margin: 0;  
+padding: 0;  
+box-sizing: border-box;  
+\-webkit-font-smoothing: antialiased;  
+} 
 
-        .container {
-            text-align: center;
-            max-width: 800px;
-            width: 100%;
-            padding: 80px 24px;
-        }
+body {  
+background-color: #000000;  
+color: #ffffff;  
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  
+letter-spacing: 0.05em;  
+display: flex;  
+flex-direction: column;  
+min-height: 100vh;  
+justify-content: space-between;  
+padding: 80px 40px;  
+} 
 
-        /* 🏔️ 完美归位：真正属于方案二（奥林匹斯断崖）的硬朗等高折线样式 */
-        .brand-logo-svg {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 24px;
-            opacity: 0.95;
-            display: inline-block;
-        }
+/\* 顶部终极定稿组合商标区域 \*/  
+header {  
+display: flex;  
+flex-direction: column;  
+align-items: center;  
+background-color: #000000;  
+margin-top: 5vh;  
+} 
 
-        .brand-header {
-            font-size: 42px; 
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin: 0 0 24px 0;
-            line-height: 1.1;
-        }
+/\* 完美复刻的圆环攀登折线图腾 \*/  
+.brand-icon {  
+width: 130px;  
+height: 130px;  
+margin-bottom: 25px;  
+} 
 
-        .slogan {
-            font-size: 15px;
-            color: #ffffff;
-            opacity: 0.5;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            font-weight: 300;
-        }
+/\* 主标题样式 */  
+.brand-title {  
+color: #ffffff;  
+font-size: 2.1rem;  
+font-weight: 600;  
+letter-spacing: 0.22em;  
+text-indent: 0.22em; /* 完美的绝对居中修正 \*/  
+margin: 0 0 10px 0;  
+} 
 
-        .cta-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 80px;
-        }
+/\* 方案3专属后缀：精准缩小一点点，保持极致超宽字距与低调灰度 */  
+.brand-tagline {  
+color: #666667;  
+font-size: 0.65rem; /* 精准缩小比例 */  
+font-weight: 300;  
+letter-spacing: 0.42em; /* 进一步拉宽字距增强空灵感 */  
+text-indent: 0.42em; /* 完美的绝对居中修正 \*/  
+text-transform: uppercase;  
+margin: 0;  
+} 
 
-        .cta-btn {
-            display: inline-block;
-            padding: 14px 40px;
-            border: 1px solid #ffffff;
-            background: transparent;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 15px;
-            letter-spacing: 2px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-            outline: none;
-        }
+/\* 核心交互区域 \*/  
+main {  
+display: flex;  
+flex-direction: column;  
+align-items: center;  
+justify-content: center;  
+flex-grow: 1;  
+margin: 40px 0;  
+} 
 
-        @media (min-width: 769px) {
-            .cta-wrapper:hover .qr-box {
-                display: block !important;
-            }
-        }
+/\* 交互按钮 \*/  
+.cta-btn {  
+background: none;  
+border: 1px solid #ffffff;  
+color: #ffffff;  
+padding: 15px 40px;  
+font-size: 0.95rem;  
+letter-spacing: 0.1em;  
+cursor: pointer;  
+transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);  
+} 
 
-        .qr-box {
-            display: none; 
-            position: absolute;
-            top: 105%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #111111;
-            border: 1px solid #333333;
-            padding: 14px;
-            border-radius: 4px;
-            z-index: 999;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
+/\* 弹出层（默认隐藏） \*/  
+.modal {  
+display: none;  
+flex-direction: column;  
+align-items: center;  
+margin-top: 40px;  
+opacity: 0;  
+transition: opacity 0.4s ease;  
+} 
 
-        .qr-box.show-active {
-            display: block !important;
-        }
+.modal.active {  
+display: flex;  
+opacity: 1;  
+} 
 
-        .qr-box img {
-            width: 140px;
-            height: 140px;
-            display: block;
-        }
+.qrcode-img {  
+width: 200px;  
+height: 200px;  
+object-fit: cover;  
+filter: grayscale(100%);  
+border: 1px solid #ffffff;  
+} 
 
-        .qr-box p {
-            margin: 8px 0 0 0;
-            color: #ffffff;
-            opacity: 0.6;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-align: center;
-            white-space: nowrap;
-        }
+.qrcode-text {  
+margin-top: 20px;  
+font-size: 0.8rem;  
+letter-spacing: 0.2em;  
+color: #888888;  
+text-indent: 0.2em;  
+} 
 
-        .standards {
-            text-align: left;
-            max-width: 650px;
-            margin: 0 auto;
-        }
+/\* 底部4项硬核安全标准 \*/  
+footer {  
+width: 100%;  
+max-width: 1000px;  
+margin: 0 auto;  
+} 
 
-        .standards-title {
-            font-size: 12px;
-            color: #ffffff;
-            opacity: 0.3;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 12px;
-        }
+.standards-grid {  
+display: grid;  
+grid-template-columns: repeat(4, 1fr);  
+gap: 20px;  
+border-top: 1px solid #222222;  
+padding-top: 40px;  
+} 
 
-        .item {
-            margin-bottom: 35px;
-        }
+.standard-item {  
+font-size: 0.85rem;  
+letter-spacing: 0.1em;  
+color: #ffffff;  
+text-align: center;  
+} 
 
-        .item h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-            letter-spacing: 1px;
-        }
+/\* 媒体查询：电脑端悬停逻辑 \*/  
+@media (min-width: 769px) {  
+.cta-btn:hover {  
+background-color: #ffffff;  
+color: #000000;  
+}  
+.interaction-container:hover .modal {  
+display: flex;  
+opacity: 1;  
+}  
+} 
 
-        .item p {
-            font-size: 13px;
-            color: #ffffff;
-            opacity: 0.55;
-            line-height: 1.7;
-            margin: 0;
-        }
+/\* 媒体查询：手机端适配 \*/  
+@media (max-width: 768px) {  
+body {  
+padding: 40px 20px;  
+}  
+.brand-icon {  
+width: 100px;  
+height: 100px;  
+margin-bottom: 20px;  
+}  
+.brand-title {  
+font-size: 1.6rem;  
+}  
+.brand-tagline {  
+font-size: 0.58rem;  
+letter-spacing: 0.32em;  
+text-indent: 0.32em;  
+}  
+.standards-grid {  
+grid-template-columns: repeat(2, 1fr);  
+gap: 30px;  
+}  
+.qrcode-img {  
+width: 180px;  
+height: 180px;  
+}  
+}  
+  
+  
+ 
 
-        @media screen and (max-width: 768px) {
-            .container { padding: 40px 20px; }
-            .brand-header { font-size: 32px; }
-            .slogan { font-size: 13px; }
-            .brand-logo-svg { width: 50px; height: 50px; margin-bottom: 18px; }
-            .qr-box {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                margin: 15px auto 0 auto;
-                background: transparent;
-                border: none;
-                padding: 0;
-                box-shadow: none;
-            }
-            .qr-box img { width: 140px; height: 140px; margin: 0 auto; }
-        }
-    </style>
-</head>
-<body>
+  
+  
+立即报名 / 获取路书 ⚡ 
 
-    <div class="container">
-        
-        <!-- 🏔️ 完美归位：您点开链接看中的那套硬朗、极简几何折线山脉标志 -->
-        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-            <!-- 外层断崖主线 -->
-            <path d="M15 75 L38 38 L54 56 L85 22" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 内层平行等高辅助线 -->
-            <path d="M30 75 L46 50 L56 62 L74 42" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-            <!-- 极简平直基底线 -->
-            <path d="M22 75 L78 75" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-opacity="0.3"/>
-        </svg>
+  
+  
+微信扫码 · 获取官方路书  
+  
+  
+ 
 
-        <!-- 独立的文本大标题 -->
-        <h1 class="brand-header">MARS.OUTDOOR</h1>
+  
+  
+中登协领队  
+WFA荒野医疗  
+卫星通信  
+极致纯粹体验  
+  
+ 
 
-        <div class="slogan">步入极致纯粹 · 去旷野寻找你的火星</div>
-
-        <div class="cta-wrapper">
-            <button class="cta-btn" onclick="toggleQRCode(event)">立即报名 / 获取路书 ⚡</button>
-            <div class="qr-box" id="qrBox">
-                <img src="qrcode.jpg" alt="微信二维码">
-                <p>微信扫码 · 获取官方路书</p>
-            </div>
-        </div>
-
-        <div class="standards">
-            <div class="standards-title">硬核安全 / Standards</div>
-
-            <div class="item">
-                <h3>中登协认证领队</h3>
-                <p>所有路线均由中国登山协会认证的专业户外指导员全程带队，拒绝盲目探险。</p>
-            </div>
-
-            <div class="item">
-                <h3>WFA 荒野医疗保障</h3>
-                <p>领队均具备国际标准荒野第一响应者（WFA）资质，随身配备专业医疗应急包。</p>
-            </div>
-
-            <div class="item">
-                <h3>卫星通信覆盖</h3>
-                <p>无人区及弱信号区域全员配备北斗卫星通信终端，确保实时轨迹追踪与安全连接。</p>
-            </div>
-
-            <div class="item">
-                <h3>极致纯粹体验</h3>
-                <p>独立踩线，严格控制成团人数，100%无商业购物，只有极致与纯粹的荒野探索。</p>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        function toggleQRCode(event) {
-            event.stopPropagation();
-            var qr = document.getElementById('qrBox');
-            if (qr.classList.contains('show-active')) {
-                qr.classList.remove('show-active');
-            } else {
-                qr.classList.add('show-active');
-            }
-        }
-        document.addEventListener('click', function() {
-            var qr = document.getElementById('qrBox');
-            if (qr) {
-                qr.classList.remove('show-active');
-            }
-        });
-    </script>
-
-</body>
-</html>
+  
+// 手机端点击切换显示/隐藏逻辑  
+function toggleMobileModal() {  
+if (window.innerWidth <= 768) {  
+const modal = document.getElementById('qrcodeModal');  
+modal.classList.toggle('active');  
+}  
+}
