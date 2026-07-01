@@ -1,99 +1,102 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>火星户外探索频道 | MARS.OUTDOOR</title>
-    <style>
-        /* 极致大牌风：纯黑背景，抗锯齿，全面消除内外边距 */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background-color: #000000; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
-        
-        /* 头部品牌区：中文精致哑光灰，英文与副标题完全紧凑咬合 */
-        .hero-section { width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 130px 24px 60px 24px; text-align: center; }
-        .brand-title-cn { font-size: 28px; font-weight: 800; letter-spacing: 2px; color: #999999; line-height: 1; margin-bottom: 14px; }
-        .brand-title-en { font-size: 14px; font-weight: 200; letter-spacing: 5px; color: #555555; text-transform: uppercase; line-height: 1; }
-        .brand-subtitle { font-size: 9px; font-weight: 400; letter-spacing: 3px; color: #333333; margin-top: 18px; text-transform: uppercase; line-height: 1; }
-        
-        /* 探索独白模块：增加下方边距，平滑过渡到安全背书 */
-        .about-section { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px 24px 80px 24px; }
-        .about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 32px; display: block; text-align: center; }
-        .about-manifesto { font-size: 15px; font-weight: 300; line-height: 2.3; color: #cccccc; letter-spacing: 1.5px; text-align: justify; }
+html
 
-        /* 四项硬核安全背书 */
-        .standards-section { width: 100%; max-width: 1100px; margin: 0 auto 120px auto; padding: 0 24px; }
-        .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
-        .standard-item { display: flex; flex-direction: column; }
-        .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
-        .standard-title-text { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; color: #ffffff; }
-        .standard-desc { font-size: 12px; color: #888888; line-height: 1.8; text-align: justify; }
-
-        /* 页脚官方声明 */
-        .footer-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 24px 40px 24px; border-top: 1px solid #111111; }
-        .footer-text { font-size: 11px; color: #444444; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px; }
-
-        /* 移动端响应式 */
-        @media (max-width: 768px) {
-            .hero-section { padding: 100px 20px 40px 20px; }
-            .brand-title-cn { font-size: 22px; letter-spacing: 1px; margin-bottom: 10px; color: #999999; }
-            .brand-title-en { font-size: 12px; letter-spacing: 3px; color: #555555; }
-            .brand-subtitle { font-size: 8px; letter-spacing: 2px; margin-top: 14px; color: #333333; }
-            .about-section { padding-top: 20px; padding-bottom: 50px; }
-            .about-manifesto { font-size: 14px; line-height: 2.1; }
-            .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 品牌主视觉区 -->
-    <section class="hero-section">
-        <h1 class="brand-title-cn">火星户外探索频道</h1>
-        <h2 class="brand-title-en">MARS.OUTDOOR</h2>
-        <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
-    </section>
-
-    <!-- 探索独白模块 -->
-    <section class="about-section">
-        <span class="about-tag">ABOUT // 探索独白</span>
-        <div class="about-manifesto">
-            <p class="manifesto-paragraph">起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌，是一场关于地理边界与个体意志的闭环对冲。步入极致纯粹，卸下文明的伪饰，去旷野，寻找你的火星。火星不在远方，而是深埋于你体内的那座不妥协、不跟风、冷峻且独立的精神坐标。在没有中间地带的无人之境，直面风雪、重力与自然演变。每一次刺穿地表边界的跋涉，都是在熵增的世界里，对个体意志的极限淬炼。</p>
-            <br>
-            <p class="manifesto-paragraph">我们为少数行者而生。以绝对理性的技术闭环锁死未知，只为在宇宙最深沉的孤独中，为你锚定那一处极致纯粹的信任防线。</p>
-        </div>
-    </section>
-
-    <!-- 四项硬核安全背书 -->
-    <section class="standards-section">
-        <div class="standards-grid">
-            <div class="standard-item">
-                <div class="standard-num">01 // TEAM</div>
-                <h3 class="standard-title-text">中登协领队</h3>
-                <p class="standard-desc">全线向导均持中国登山协会认证资质执导，具备极强自然预判与复杂地形通过能力。</p>
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>火星户外探索频道 | MARS.OUTDOOR</title>
+        <style>
+            /* 极致大牌风：纯黑背景，抗锯齿，全面消除内外边距 */
+            * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+            body { background-color: #000000; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+            
+            /* 头部品牌区：中文精致哑光灰，英文与副标题完全紧凑咬合 */
+            .hero-section { width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 130px 24px 60px 24px; text-align: center; }
+            .brand-title-cn { font-size: 28px; font-weight: 800; letter-spacing: 2px; color: #999999; line-height: 1; margin-bottom: 14px; }
+            .brand-title-en { font-size: 14px; font-weight: 200; letter-spacing: 5px; color: #555555; text-transform: uppercase; line-height: 1; }
+            .brand-subtitle { font-size: 9px; font-weight: 400; letter-spacing: 3px; color: #333333; margin-top: 18px; text-transform: uppercase; line-height: 1; }
+            
+            /* 探索独白模块：平滑过渡到安全背书 */
+            .about-section { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px 24px 80px 24px; }
+            .about-tag { font-size: 11px; font-family: monospace; color: #444444; letter-spacing: 3px; margin-bottom: 32px; display: block; text-align: center; }
+            .about-manifesto { font-size: 15px; font-weight: 300; line-height: 2.3; color: #cccccc; letter-spacing: 1.5px; text-align: justify; }
+    
+            /* 四项硬核安全背书 */
+            .standards-section { width: 100%; max-width: 1100px; margin: 0 auto 120px auto; padding: 0 24px; }
+            .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid #222222; padding-top: 40px; }
+            .standard-item { display: flex; flex-direction: column; }
+            .standard-num { font-size: 12px; font-family: monospace; color: #444444; margin-bottom: 12px; }
+            .standard-title-text { font-size: 15px; font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; color: #ffffff; }
+            .standard-desc { font-size: 12px; color: #888888; line-height: 1.8; text-align: justify; }
+    
+            /* 页脚官方声明 */
+            .footer-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 24px 40px 24px; border-top: 1px solid #111111; }
+            .footer-text { font-size: 11px; color: #444444; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px; }
+    
+            /* 移动端响应式 */
+            @media (max-width: 768px) {
+                .hero-section { padding: 100px 20px 40px 20px; }
+                .brand-title-cn { font-size: 22px; letter-spacing: 1px; margin-bottom: 10px; color: #999999; }
+                .brand-title-en { font-size: 12px; letter-spacing: 3px; color: #555555; }
+                .brand-subtitle { font-size: 8px; letter-spacing: 2px; margin-top: 14px; color: #333333; }
+                .about-section { padding-top: 20px; padding-bottom: 50px; }
+                .about-manifesto { font-size: 14px; line-height: 2.1; }
+                .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- 品牌主视觉区 -->
+        <section class="hero-section">
+            <h1 class="brand-title-cn">火星户外探索频道</h1>
+            <h2 class="brand-title-en">MARS.OUTDOOR</h2>
+            <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
+        </section>
+    
+        <!-- 探索独白模块 -->
+        <section class="about-section">
+            <span class="about-tag">ABOUT // 探索独白</span>
+            <div class="about-manifesto">
+                <p>起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌，是一场关于地理边界与个体意志的闭环对冲。火星不在远方，而是深埋于你体内的那座不妥协、不跟风、冷峻且独立的精神坐标。在没有中间地带的无人之境，直面风雪、重力与自然演变。每一次刺穿地表边界的跋涉，都是在熵增的世界里，对个体意志的极限淬炼。步入极致纯粹，去旷野，寻找你的火星。</p>
             </div>
-            <div class="standard-item">
-                <div class="standard-num">02 // MEDICAL</div>
-                <h3 class="standard-title-text">WFA荒野医疗</h3>
-                <p class="standard-desc">核心领队100%通过国际荒野第一响应者高级医疗认证，严格死守无人区现场应急红线。</p>
+        </section>
+    
+        <!-- 四项硬核安全背书 -->
+        <section class="standards-section">
+            <div class="standards-grid">
+                <div class="standard-item">
+                    <div class="standard-num">01 // TEAM</div>
+                    <h3 class="standard-title-text">中登协领队</h3>
+                    <p class="standard-desc">全线向导均持中国登山协会认证资质执导，具备极强自然预判与复杂地形通过能力。</p>
+                </div>
+                <div class="standard-item">
+                    <div class="standard-num">02 // MEDICAL</div>
+                    <h3 class="standard-title-text">WFA荒野医疗</h3>
+                    <p class="standard-desc">核心领队100%通过国际荒野第一响应者高级医疗认证，严格死守无人区现场应急红线。</p>
+                </div>
+                <div class="standard-item">
+                    <div class="standard-num">03 // COMMS</div>
+                    <h3 class="standard-title-text">卫星通信</h3>
+                    <p class="standard-desc">全队标配高精度卫星通信终端与全天候GPS定位，全时段与海内外地面紧急救援中心保持联动。</p>
+                </div>
+                <div class="standard-item">
+                    <div class="standard-num">04 // PURITY</div>
+                    <h3 class="standard-title-text">极致纯粹体验</h3>
+                    <p class="standard-desc">100%自主独立研发硬核探险路线。拒绝一切商业化购物污染，回归神圣自然的生态纯粹。</p>
+                </div>
             </div>
-            <div class="standard-item">
-                <div class="standard-num">03 // COMMS</div>
-                <h3 class="standard-title-text">卫星通信</h3>
-                <p class="standard-desc">全队标配高精度卫星通信终端与全天候GPS定位，全时段与海内外地面紧急救援中心保持联动。</p>
-            </div>
-            <div class="standard-item">
-                <div class="standard-num">04 // PURITY</div>
-                <h3 class="standard-title-text">极致纯粹体验</h3>
-                <p class="standard-desc">100%自主独立研发硬核探险路线。拒绝一切商业化购物污染，回归神圣自然的生态纯粹。</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    
+        <!-- 底部官方免责与版权页脚 -->
+        <footer class="footer-section">
+            <p class="footer-text">© 2026 MARS.OUTDOOR EXPLORATION CHANNEL. ALL RIGHTS RESERVED.</p>
+            <p class="footer-text">DISCLAIMER // 户外运动具有天然不可抗力风险。本频道所有活动路线均由专业安全团队实行闭环风险管控，并强制托保高额专业户外探险险种。未经官方授权，严禁对频道发布的独家路书、影像进行二次商业倒卖或采集。</p>
+        </footer>
+    
+    </body>
+    </html>
+    
 
-    <!-- 底部官方免责与版权页脚 -->
-    <footer class="footer-section">
-        <p class="footer-text">© 2026 MARS.OUTDOOR EXPLORATION CHANNEL. ALL RIGHTS RESERVED.</p>
-        <p class="footer-text">DISCLAIMER // 户外运动具有天然不可抗力风险。本频道所有活动路线均由专业安全团队实行闭环风险管控，并强制托保高额专业户外探险险种。未经官方授权，严禁对频道发布的独家路书、影像进行二次商业倒卖或采集。</p>
-    </footer>
-
-</body>
-</html>
+请谨慎使用此类代码。
