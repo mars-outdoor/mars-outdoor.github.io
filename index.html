@@ -36,11 +36,11 @@
             margin-bottom: auto;
         }
 
-        /* 1:1 高精度复刻商标尺寸控制 */
+        /* 1:1 高精度原厂图标尺寸控制 */
         .brand-logo-wrapper {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 28px;
+            width: 160px;
+            height: 160px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,17 +54,17 @@
         .brand-title {
             font-size: 32px;
             font-weight: 700;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             line-height: 1;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             text-transform: uppercase;
         }
 
         .brand-subtitle {
             font-size: 11px;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: #888888;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #777777;
             text-transform: uppercase;
         }
 
@@ -160,9 +160,9 @@
                 padding: 60px 20px 40px 20px;
             }
             .brand-logo-wrapper {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 24px;
+                width: 130px;
+                height: 130px;
+                margin-bottom: 20px;
             }
             .brand-title {
                 font-size: 26px;
@@ -180,17 +180,20 @@
 
     <!-- 核心品牌标识区 -->
     <div class="brand-container">
-        <!-- 完美贴合实物印花的高精度原厂 SVG 图标 -->
+        <!-- 像素级1:1交叉双轨复刻商标 -->
         <div class="brand-logo-wrapper">
             <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                <!-- 外部正圆 -->
-                <circle cx="50" cy="50" r="42" stroke="#ffffff" stroke-width="2.5"/>
-                <!-- 后方深色平行阴影折线 -->
-                <path d="M34 66 L47 50 L57 60 L71 39" stroke="#333333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- 前方主视觉白色折线 -->
-                <path d="M29 61 L42 45 L52 55 L68 31" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- 顶端指向未来的硬核箭头 -->
-                <path d="M57 31 H68 V42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 核心正圆轮廓 -->
+                <circle cx="50" cy="50" r="41" stroke="#cccccc" stroke-width="2.2"/>
+                
+                <!-- 后方交叉暗轨：灰色交错折线 -->
+                <path d="M43.5 52 L54.5 41 L61.5 50.5 L67.5 44" stroke="#555555" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <!-- 前方主视觉：白色破圈折线 -->
+                <path d="M37.5 53.5 L46.5 42 L55 53 L62.5 35" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <!-- 顶端白色破圈箭头的硬核锐角 -->
+                <path d="M55.5 35.5 H62.8 V42.8" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
         
@@ -231,11 +234,9 @@
         const ctaBtn = document.getElementById('ctaBtn');
         const qrModal = document.getElementById('qrModal');
 
-        // 锁定移动端与PC端的动态交互逻辑
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         if (!isMobile) {
-            // 电脑端：鼠标悬停触发，移开消失
             ctaBtn.addEventListener('mouseenter', () => {
                 qrModal.classList.add('active');
             });
@@ -243,7 +244,6 @@
                 qrModal.classList.remove('active');
             });
         } else {
-            // 手机端：点击（onclick）触发，再次点击屏幕任意位置关闭
             ctaBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 qrModal.classList.add('active');
