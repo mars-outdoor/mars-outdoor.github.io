@@ -5,42 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARS.OUTDOOR | REMOTE WILDERNESS EXPERIENCE</title>
     <style>
-        /* 核心样式：黑色主题、极致简洁、移动端优化 */
+        /* 极致简约硬核户外风格 CSS 样式 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; color: #fff; font-family: -apple-system, sans-serif; overflow-x: hidden; }
-        .hero-section { padding: 100px 24px 60px; text-align: center; }
-        .logo-svg { width: 180px; height: 180px; }
-        .brand-title { font-size: 32px; font-weight: 700; letter-spacing: 6px; margin: 24px 0 14px; }
-        .about-section { max-width: 800px; margin: 0 auto; padding: 40px 24px; text-align: center; }
-        .about-manifesto { font-size: 15px; line-height: 2.4; color: #ccc; text-align: justify; }
-        .cta-trigger { background: none; border: 1px solid #fff; color: #fff; padding: 15px 44px; margin-top: 50px; cursor: pointer; }
-        .standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 40px 24px; max-width: 1100px; margin: 0 auto; }
-        .standard-item { font-size: 12px; color: #888; }
-        .standard-title-text { color: #fff; font-size: 15px; margin-bottom: 8px; }
-        @media (max-width: 768px) { .standards-grid { grid-template-columns: repeat(2, 1fr); } }
+        body { background-color: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .hero-section { display: flex; flex-direction: column; align-items: center; padding: 100px 20px 50px; text-align: center; }
+        .brand-logo-wrapper { width: 150px; height: 150px; margin-bottom: 30px; }
+        .logo-svg { width: 100%; height: 100%; }
+        .brand-title { font-size: 32px; font-weight: 700; letter-spacing: 6px; margin-bottom: 10px; }
+        .brand-subtitle { font-size: 12px; color: #777; letter-spacing: 3px; }
+        .about-section { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: justify; }
+        .about-manifesto { font-size: 15px; line-height: 2; color: #ccc; }
+        .cta-container { text-align: center; margin: 60px 0; }
+        .cta-trigger { background: #000; color: #fff; border: 1px solid #fff; padding: 15px 40px; cursor: pointer; transition: 0.3s; }
+        .cta-trigger:hover { background: #fff; color: #000; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 100; }
+        .modal-overlay.active { display: flex; }
+        .qr-image { width: 200px; height: 200px; }
     </style>
 </head>
 <body>
     <section class="hero-section">
-        <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="39" stroke="#fff" stroke-width="2.2"/>
-            <path d="M45.5 54.5 L53.5 45.5 L60.5 53.5 L69 43.5" stroke="#555" stroke-width="3" stroke-linecap="round"/>
-            <path d="M36.5 53.5 L46 42.5 L54 51.5 L64.5 35" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M57.5 35 H64.7 V42.2" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
-        </svg>
+        <div class="brand-logo-wrapper">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2">
+                <circle cx="50" cy="50" r="40"/>
+                <path d="M35 50 L45 40 L55 50 L65 40" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
         <h1 class="brand-title">MARS.OUTDOOR</h1>
+        <p class="brand-subtitle">REMOTE WILDERNESS EXPERIENCE</p>
     </section>
     <section class="about-section">
         <div class="about-manifesto">
-            <p>火星户外探索频道（MARS.OUTDOOR）—— 独立的硬核户外厂牌，专注自然边界的极限探险与个体意志的淬炼。</p>
+            <p>起源于 2019.08 / 中国·重庆。火星户外探索频道（MARS.OUTDOOR）作为独立硬核户外厂牌...</p>
         </div>
-        <button class="cta-trigger">立即报名 / 获取路书 ⚡</button>
+        <div class="cta-container">
+            <button class="cta-trigger" id="ctaBtn">立即报名 / 获取路书 ⚡</button>
+        </div>
     </section>
-    <section class="standards-grid">
-        <div class="standard-item"><h3 class="standard-title-text">中登协领队</h3></div>
-        <div class="standard-item"><h3 class="standard-title-text">WFA荒野医疗</h3></div>
-        <div class="standard-item"><h3 class="standard-title-text">卫星通信</h3></div>
-        <div class="standard-item"><h3 class="standard-title-text">极致纯粹体验</h3></div>
-    </section>
+    <div class="modal-overlay" id="qrModal">
+        <img src="qrcode.jpg" alt="QR Code" class="qr-image">
+    </div>
+    <script>
+        const btn = document.getElementById('ctaBtn');
+        const modal = document.getElementById('qrModal');
+        btn.addEventListener('click', () => modal.classList.toggle('active'));
+        modal.addEventListener('click', () => modal.classList.remove('active'));
+    </script>
 </body>
 </html>
